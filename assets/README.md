@@ -23,13 +23,16 @@ Generated on: 8/25/2025
 2. Add the following to your HTML <head>:
 
 ```html
+<!-- Favicon references with your /assets/icons/ structure -->
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<meta property="og:image" content="https://www.websitebrandkit.com/og-image.jpg">
-<meta name="twitter:image" content="https://www.websitebrandkit.com/twitter-card.jpg">
+
+<!-- Open Graph and Twitter images with your /assets/social-media/ structure -->
+<meta property="og:image" content="https://www.websitebrandkit.com/assets/social-media/og-image.jpg">
+<meta name="twitter:image" content="https://www.websitebrandkit.com/assets/social-media/twitter-card.jpg">
 ```
 
 Generated with Icon Image Generator
