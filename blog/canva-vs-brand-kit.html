@@ -36,7 +36,60 @@
     .menu-card a { text-decoration:none; font-weight:700; color:#0066FF; }
     code { background:#f0f3f7; padding:2px 6px; border-radius:6px; }
     pre { background:#0b1028; color:#e7eaff; padding:16px; border-radius:10px; overflow:auto; }
+
+    /* Focus indicators for accessibility */
+    *:focus { outline: 2px solid var(--primary); outline-offset: 2px; }
+    button:focus, a:focus, input:focus { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+    /* Mobile responsive media queries */
+    @media (max-width: 768px) {
+      body { padding: 10px; }
+      .container { padding: 20px; }
+      .hero { padding: 20px; }
+      .hero h1 { font-size: 24px; }
+      .topbar { padding: 10px; }
+      .btn { padding: 8px 12px; font-size: 14px; }
+      footer { padding: 15px; font-size: 14px; }
+    }
+
+    @media (max-width: 480px) {
+      body { padding: 5px; }
+      .container { padding: 15px; }
+      .hero h1 { font-size: 20px; }
+      .hero p { font-size: 14px; }
+      .btn { padding: 6px 10px; font-size: 13px; }
+      h2 { font-size: 18px; }
+    }
+
+    .breadcrumb { max-width: 1000px; margin: 0 auto 10px auto; padding: 8px 12px; font-size: 14px; color: #666; }
+    .breadcrumb a { color: #0066FF; text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 8px; color: #ccc; }
   </style>
+
+  <!-- JSON-LD Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Canva vs. Website Brand Kit Generator — Which Is Faster?",
+    "description": "Canva is powerful. But for fast favicons, OG images, and app icons, a dedicated generator can save nearly an hour.",
+    "author": {
+      "@type": "Organization",
+      "name": "Play4Tomorrow"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Website Brand Kit",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.websitebrandkit.com/og-image.jpg"
+      }
+    },
+    "datePublished": "2025-01-15",
+    "dateModified": "2025-01-15"
+  }
+  </script>
 </head>
 <body>
   <nav class="topbar" role="navigation" aria-label="Top navigation">
@@ -51,6 +104,14 @@
       </a>
     </div>
   </nav>
+
+<div class="breadcrumb">
+  <a href="../index.html">Home</a>
+  <span>›</span>
+  <a href="../blog.html">Blog</a>
+  <span>›</span>
+  <span>Canva vs. Website Brand Kit Generator — Which Is Faster?</span>
+</div>
 
 <div class="hero">
   <h1>Canva vs. Website Brand Kit Generator — Which Is Faster?</h1>

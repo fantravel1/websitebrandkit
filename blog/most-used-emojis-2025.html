@@ -39,7 +39,60 @@
     table { width:100%; border-collapse: collapse; margin: 10px 0 20px 0; font-size: 15px; }
     th, td { border: 1px solid #eef0f4; padding: 10px 12px; text-align: left; vertical-align: top; }
     thead th { background: #f7f9ff; }
+
+    /* Focus indicators for accessibility */
+    *:focus { outline: 2px solid var(--primary); outline-offset: 2px; }
+    button:focus, a:focus, input:focus { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+    /* Mobile responsive media queries */
+    @media (max-width: 768px) {
+      body { padding: 10px; }
+      .container { padding: 20px; }
+      .hero { padding: 20px; }
+      .hero h1 { font-size: 24px; }
+      .topbar { padding: 10px; }
+      .btn { padding: 8px 12px; font-size: 14px; }
+      footer { padding: 15px; font-size: 14px; }
+    }
+
+    @media (max-width: 480px) {
+      body { padding: 5px; }
+      .container { padding: 15px; }
+      .hero h1 { font-size: 20px; }
+      .hero p { font-size: 14px; }
+      .btn { padding: 6px 10px; font-size: 13px; }
+      h2 { font-size: 18px; }
+    }
+
+    .breadcrumb { max-width: 1000px; margin: 0 auto 10px auto; padding: 8px 12px; font-size: 14px; color: #666; }
+    .breadcrumb a { color: #0066FF; text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 8px; color: #ccc; }
   </style>
+
+  <!-- JSON-LD Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Most Used Emojis in 2025 (And What Brands Should Do)",
+    "description": "Emojis aren't just cute anymore — they're the emotional operating system of the internet. Here's what's trending in 2025 and exactly how brands should use (and not abuse) them.",
+    "author": {
+      "@type": "Organization",
+      "name": "Play4Tomorrow"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Website Brand Kit",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.websitebrandkit.com/og-image.jpg"
+      }
+    },
+    "datePublished": "2025-01-15",
+    "dateModified": "2025-01-15"
+  }
+  </script>
 </head>
 <body>
   <nav class="topbar" role="navigation" aria-label="Top navigation">
@@ -54,6 +107,14 @@
       </a>
     </div>
   </nav>
+
+<div class="breadcrumb">
+  <a href="../index.html">Home</a>
+  <span>›</span>
+  <a href="../blog.html">Blog</a>
+  <span>›</span>
+  <span>Most Used Emojis in 2025 (And What Brands Should Do)</span>
+</div>
 
 <div class="hero">
   <h1>Most Used Emojis in 2025 (And What Brands Should Do)</h1>
