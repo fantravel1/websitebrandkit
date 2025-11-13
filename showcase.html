@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>50+ Brand Showcase: Real Emoji Logo Inspiration | Website Brand Kit</title>
+  <meta name="description" content="Get inspired by 50+ curated brand examples using emoji logos and color schemes. See real-world examples and recreate them instantly with our free generator.">
+  <link rel="canonical" href="https://www.websitebrandkit.com/showcase.html">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+  <!-- Social cards -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="50+ Brand Showcase: Real Emoji Logo Inspiration">
+  <meta property="og:description" content="Get inspired by curated brand examples using emoji logos and color schemes.">
+  <meta property="og:url" content="https://www.websitebrandkit.com/showcase.html">
+  <meta property="og:image" content="https://www.websitebrandkit.com/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #0066FF;
+      --secondary: #FF6B35;
+      --dark: #0A0E27;
+      --light: #F7F8FA;
+      --cyan: #00D4FF;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Focus indicators */
+    *:focus { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .header {
+      background: white;
+      border-radius: 12px;
+      padding: 40px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .header h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      color: var(--dark);
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .header p {
+      font-size: 18px;
+      color: #666;
+      max-width: 800px;
+      margin: 0 auto 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 25px;
+    }
+
+    .nav-links a {
+      display: inline-block;
+      padding: 12px 24px;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      background: #0052cc;
+      transform: translateY(-2px);
+    }
+
+    .nav-links a.secondary {
+      background: white;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    .filter-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    .filter-btn {
+      padding: 10px 20px;
+      background: white;
+      border: 2px solid #e0e0e0;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      font-size: 14px;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .filter-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 25px;
+      margin-bottom: 40px;
+    }
+
+    .brand-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .brand-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .brand-preview {
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 30px;
+    }
+
+    .brand-emoji {
+      font-size: 80px;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .brand-info {
+      padding: 20px;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    .brand-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 5px;
+    }
+
+    .brand-category {
+      font-size: 13px;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .brand-description {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+
+    .brand-colors {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    .color-swatch {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      border: 2px solid #f0f0f0;
+      position: relative;
+      cursor: help;
+    }
+
+    .color-swatch:hover::after {
+      content: attr(data-color);
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--dark);
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      white-space: nowrap;
+      z-index: 10;
+    }
+
+    .recreate-btn {
+      width: 100%;
+      padding: 12px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 14px;
+    }
+
+    .recreate-btn:hover {
+      background: #0052cc;
+    }
+
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 30px;
+      text-align: center;
+      border-radius: 12px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: var(--cyan);
+      text-decoration: none;
+      font-weight: 600;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 768px) {
+      .header { padding: 30px 20px; }
+      .header h1 { font-size: 28px; }
+      .header p { font-size: 16px; }
+      .showcase-grid { grid-template-columns: 1fr; gap: 20px; }
+      .filter-buttons { padding: 15px; gap: 8px; }
+      .filter-btn { padding: 8px 16px; font-size: 13px; }
+      .brand-preview { height: 180px; }
+      .brand-emoji { font-size: 70px; }
+    }
+
+    @media (max-width: 480px) {
+      .header h1 { font-size: 24px; }
+      .nav-links { flex-direction: column; }
+      .nav-links a { width: 100%; text-align: center; }
+    }
+  </style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KHBKZ4T8TP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KHBKZ4T8TP');
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🎨 Brand Showcase: 50+ Real Examples</h1>
+      <p>Get inspired by curated brand examples using emoji logos and color schemes. Click "Recreate This" to instantly generate these designs!</p>
+
+      <div class="nav-links">
+        <a href="index.html">🎨 Create Your Brand</a>
+        <a href="color-palettes.html" class="secondary">🎨 Color Palettes</a>
+        <a href="emoji-combos.html" class="secondary">✨ Emoji Combos</a>
+        <a href="blog.html" class="secondary">📚 Blog</a>
+      </div>
+    </div>
+
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-category="all">All</button>
+      <button class="filter-btn" data-category="tech">Tech</button>
+      <button class="filter-btn" data-category="food">Food & Beverage</button>
+      <button class="filter-btn" data-category="fitness">Fitness</button>
+      <button class="filter-btn" data-category="education">Education</button>
+      <button class="filter-btn" data-category="finance">Finance</button>
+      <button class="filter-btn" data-category="creative">Creative</button>
+      <button class="filter-btn" data-category="ecommerce">E-commerce</button>
+      <button class="filter-btn" data-category="health">Health</button>
+    </div>
+
+    <div class="showcase-grid" id="showcaseGrid">
+      <!-- Brand cards will be inserted here by JavaScript -->
+    </div>
+
+    <footer>
+      <p>
+        <a href="legal-info-about.html#privacy">Privacy Policy</a> |
+        <a href="legal-info-about.html#terms">Terms & Conditions</a> |
+        <a href="legal-info-about.html#about">About Us</a> |
+        <a href="legal-info-about.html#contact">Contact Us</a>
+      </p>
+      <p>&copy; 2025 Play4Tomorrow. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    const brandExamples = [
+      // TECH
+      { emoji: '🚀', name: 'RocketLaunch', category: 'tech', colors: ['#0066FF', '#00D4FF'], description: 'Fast deployment platform that gets your apps to space' },
+      { emoji: '⚡', name: 'ZapCloud', category: 'tech', colors: ['#FFD700', '#FFA500'], description: 'Lightning-fast cloud hosting for modern developers' },
+      { emoji: '💻', name: 'CodeCraft', category: 'tech', colors: ['#7C3AED', '#A78BFA'], description: 'Professional coding bootcamp for career changers' },
+      { emoji: '🔧', name: 'FixIt Pro', category: 'tech', colors: ['#EF4444', '#DC2626'], description: 'Tech support and device repair services' },
+      { emoji: '🎯', name: 'TargetDev', category: 'tech', colors: ['#10B981', '#059669'], description: 'Goal-oriented project management for dev teams' },
+      { emoji: '🌐', name: 'GlobalNet', category: 'tech', colors: ['#0066FF', '#3B82F6'], description: 'International web hosting and CDN services' },
+      { emoji: '🤖', name: 'BotMaker', category: 'tech', colors: ['#6366F1', '#818CF8'], description: 'AI chatbot builder for customer service' },
+      { emoji: '📱', name: 'AppFlow', category: 'tech', colors: ['#EC4899', '#F472B6'], description: 'Mobile app development workflow tools' },
+
+      // FOOD & BEVERAGE
+      { emoji: '☕', name: 'Brew & Bean', category: 'food', colors: ['#6F4E37', '#A0826D'], description: 'Artisan coffee roasters with local sourcing' },
+      { emoji: '🍕', name: 'Pizza Paradise', category: 'food', colors: ['#DC2626', '#FFA500'], description: 'Wood-fired authentic Italian pizzeria' },
+      { emoji: '🍜', name: 'Ramen Republic', category: 'food', colors: ['#F59E0B', '#EF4444'], description: 'Traditional Japanese ramen house' },
+      { emoji: '🍰', name: 'Sweet Moments', category: 'food', colors: ['#EC4899', '#FDE68A'], description: 'Custom cakes and desserts for celebrations' },
+      { emoji: '🥗', name: 'Fresh Bowl', category: 'food', colors: ['#10B981', '#34D399'], description: 'Healthy salad and smoothie bar' },
+      { emoji: '🍔', name: 'Burger Boss', category: 'food', colors: ['#DC2626', '#FCD34D'], description: 'Gourmet burgers with premium ingredients' },
+      { emoji: '🍦', name: 'Ice Dream', category: 'food', colors: ['#60A5FA', '#FDE68A'], description: 'Handcrafted ice cream with unique flavors' },
+      { emoji: '🌮', name: 'Taco Time', category: 'food', colors: ['#F59E0B', '#EF4444'], description: 'Authentic Mexican street food' },
+      { emoji: '🍣', name: 'Sushi Station', category: 'food', colors: ['#DC2626', '#1F2937'], description: 'Fresh sushi and Japanese cuisine' },
+      { emoji: '🥐', name: 'Croissant Café', category: 'food', colors: ['#D97706', '#FBBF24'], description: 'French pastries and breakfast spot' },
+
+      // FITNESS
+      { emoji: '💪', name: 'PowerGym', category: 'fitness', colors: ['#EF4444', '#DC2626'], description: 'Strength training and powerlifting facility' },
+      { emoji: '🏃', name: 'RunFlow', category: 'fitness', colors: ['#FF6B35', '#0066FF'], description: 'Running coaching and marathon training' },
+      { emoji: '🧘', name: 'ZenYoga', category: 'fitness', colors: ['#7C3AED', '#A78BFA'], description: 'Peaceful yoga and meditation studio' },
+      { emoji: '🥊', name: 'Fight Club Gym', category: 'fitness', colors: ['#1F2937', '#EF4444'], description: 'Boxing and martial arts training' },
+      { emoji: '🚴', name: 'Cycle Studio', category: 'fitness', colors: ['#10B981', '#3B82F6'], description: 'Indoor cycling and spinning classes' },
+      { emoji: '⚡', name: 'FitBolt', category: 'fitness', colors: ['#FFD700', '#FF6B35'], description: 'High-intensity interval training programs' },
+      { emoji: '🏋️', name: 'Iron Temple', category: 'fitness', colors: ['#6B7280', '#1F2937'], description: 'Serious weightlifting and bodybuilding' },
+
+      // EDUCATION
+      { emoji: '📚', name: 'BookSmart', category: 'education', colors: ['#3B82F6', '#60A5FA'], description: 'Online learning platform for students' },
+      { emoji: '🎓', name: 'GradPath', category: 'education', colors: ['#7C3AED', '#A78BFA'], description: 'College prep and career guidance' },
+      { emoji: '✏️', name: 'WriteWell', category: 'education', colors: ['#F59E0B', '#FBBF24'], description: 'Writing tutoring and essay coaching' },
+      { emoji: '🔬', name: 'ScienceLab', category: 'education', colors: ['#10B981', '#059669'], description: 'STEM education and experiments' },
+      { emoji: '🎨', name: 'ArtClass', category: 'education', colors: ['#EC4899', '#F472B6'], description: 'Creative arts education for kids' },
+      { emoji: '🌍', name: 'WorldLearn', category: 'education', colors: ['#0066FF', '#10B981'], description: 'Geography and culture courses' },
+      { emoji: '🧮', name: 'MathMasters', category: 'education', colors: ['#EF4444', '#3B82F6'], description: 'Math tutoring from basics to calculus' },
+
+      // FINANCE
+      { emoji: '💰', name: 'WealthWise', category: 'finance', colors: ['#10B981', '#059669'], description: 'Financial planning and wealth management' },
+      { emoji: '📈', name: 'TrendInvest', category: 'finance', colors: ['#0066FF', '#3B82F6'], description: 'Stock trading and investment platform' },
+      { emoji: '💳', name: 'PayFlow', category: 'finance', colors: ['#7C3AED', '#A78BFA'], description: 'Digital payment processing solutions' },
+      { emoji: '🏦', name: 'BankEasy', category: 'finance', colors: ['#3B82F6', '#1E40AF'], description: 'Simple online banking for everyone' },
+      { emoji: '💎', name: 'GemInvest', category: 'finance', colors: ['#06B6D4', '#0891B2'], description: 'Precious metals and crypto trading' },
+      { emoji: '📊', name: 'DataMoney', category: 'finance', colors: ['#F59E0B', '#D97706'], description: 'Financial analytics and insights' },
+
+      // CREATIVE
+      { emoji: '🎨', name: 'ColorStudio', category: 'creative', colors: ['#EC4899', '#F59E0B', '#10B981'], description: 'Graphic design and branding agency' },
+      { emoji: '📸', name: 'SnapPro', category: 'creative', colors: ['#6366F1', '#8B5CF6'], description: 'Professional photography services' },
+      { emoji: '🎬', name: 'FilmCraft', category: 'creative', colors: ['#EF4444', '#1F2937'], description: 'Video production and editing studio' },
+      { emoji: '🎵', name: 'SoundWave', category: 'creative', colors: ['#8B5CF6', '#A78BFA'], description: 'Music production and recording' },
+      { emoji: '✨', name: 'DesignMagic', category: 'creative', colors: ['#FFD700', '#FF6B35'], description: 'UI/UX design for digital products' },
+      { emoji: '🎭', name: 'StagePlay', category: 'creative', colors: ['#DC2626', '#7C3AED'], description: 'Theater production company' },
+
+      // E-COMMERCE
+      { emoji: '🛒', name: 'QuickCart', category: 'ecommerce', colors: ['#10B981', '#059669'], description: 'Fast online shopping platform' },
+      { emoji: '📦', name: 'PackShip', category: 'ecommerce', colors: ['#F59E0B', '#D97706'], description: 'Fulfillment and shipping services' },
+      { emoji: '🎁', name: 'GiftBox', category: 'ecommerce', colors: ['#EC4899', '#F472B6'], description: 'Curated gift boxes and subscriptions' },
+      { emoji: '👟', name: 'SneakerSpot', category: 'ecommerce', colors: ['#1F2937', '#EF4444'], description: 'Premium sneaker marketplace' },
+      { emoji: '📱', name: 'TechMart', category: 'ecommerce', colors: ['#3B82F6', '#1E40AF'], description: 'Electronics and gadgets store' },
+      { emoji: '🌿', name: 'EcoShop', category: 'ecommerce', colors: ['#10B981', '#059669'], description: 'Sustainable and eco-friendly products' },
+
+      // HEALTH
+      { emoji: '🏥', name: 'HealthHub', category: 'health', colors: ['#EF4444', '#DC2626'], description: 'Medical clinic and urgent care' },
+      { emoji: '💊', name: 'PillTracker', category: 'health', colors: ['#3B82F6', '#60A5FA'], description: 'Medication reminder and management app' },
+      { emoji: '🧠', name: 'MindCare', category: 'health', colors: ['#7C3AED', '#A78BFA'], description: 'Mental health therapy and counseling' },
+      { emoji: '❤️', name: 'HeartWell', category: 'health', colors: ['#EF4444', '#F87171'], description: 'Cardiology and heart health center' },
+      { emoji: '🦷', name: 'SmileDental', category: 'health', colors: ['#06B6D4', '#F0FDFA'], description: 'Family dentistry and cosmetic care' },
+      { emoji: '👁️', name: 'VisionPro', category: 'health', colors: ['#3B82F6', '#60A5FA'], description: 'Eye care and optometry services' }
+    ];
+
+    function createBrandCard(brand) {
+      const card = document.createElement('div');
+      card.className = 'brand-card';
+      card.dataset.category = brand.category;
+
+      const gradientColors = brand.colors.join(', ');
+      const bgStyle = brand.colors.length > 1
+        ? `linear-gradient(135deg, ${gradientColors})`
+        : brand.colors[0];
+
+      card.innerHTML = `
+        <div class="brand-preview" style="background: ${bgStyle}">
+          <div class="brand-emoji">${brand.emoji}</div>
+        </div>
+        <div class="brand-info">
+          <div class="brand-name">${brand.name}</div>
+          <div class="brand-category">${brand.category}</div>
+          <div class="brand-description">${brand.description}</div>
+          <div class="brand-colors">
+            ${brand.colors.map(color => `<div class="color-swatch" style="background: ${color}" data-color="${color}"></div>`).join('')}
+          </div>
+          <button class="recreate-btn" onclick="recreateBrand('${brand.emoji}', '${brand.colors[0]}', '${brand.name}')">
+            ✨ Recreate This
+          </button>
+        </div>
+      `;
+
+      return card;
+    }
+
+    function renderShowcase(category = 'all') {
+      const grid = document.getElementById('showcaseGrid');
+      grid.innerHTML = '';
+
+      const filtered = category === 'all'
+        ? brandExamples
+        : brandExamples.filter(b => b.category === category);
+
+      filtered.forEach(brand => {
+        grid.appendChild(createBrandCard(brand));
+      });
+    }
+
+    function recreateBrand(emoji, color, name) {
+      // Save to localStorage
+      const prefs = {
+        emoji: emoji,
+        emojiName: name,
+        color: color,
+        style: 'default',
+        mainText: name,
+        tagline: 'Your inspiring tagline here',
+        websiteUrl: 'yourwebsite.com'
+      };
+      localStorage.setItem('brandKitPreferences', JSON.stringify(prefs));
+
+      // Redirect to main tool
+      window.location.href = 'index.html';
+    }
+
+    // Filter functionality
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        renderShowcase(this.dataset.category);
+      });
+    });
+
+    // Initial render
+    renderShowcase();
+  </script>
+</body>
+</html>
