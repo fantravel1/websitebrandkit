@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>100+ Color Palettes for Branding | Free Brand Color Schemes 2025</title>
+  <meta name="description" content="Discover 100+ curated color palettes for your brand. From bold to minimal, find the perfect color scheme with hex codes and instant application.">
+  <link rel="canonical" href="https://www.websitebrandkit.com/color-palettes.html">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+
+  <!-- Social cards -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="100+ Color Palettes for Branding">
+  <meta property="og:description" content="Curated color schemes for every brand style. Find your perfect palette in seconds.">
+  <meta property="og:url" content="https://www.websitebrandkit.com/color-palettes.html">
+  <meta property="og:image" content="https://www.websitebrandkit.com/og-image.jpg">
+
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #0066FF;
+      --dark: #0A0E27;
+      --cyan: #00D4FF;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    *:focus { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .header {
+      background: white;
+      border-radius: 12px;
+      padding: 40px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .header h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      color: var(--dark);
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .header p {
+      font-size: 18px;
+      color: #666;
+      max-width: 800px;
+      margin: 0 auto 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 25px;
+    }
+
+    .nav-links a {
+      padding: 12px 24px;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      background: #0052cc;
+      transform: translateY(-2px);
+    }
+
+    .nav-links a.secondary {
+      background: white;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    .filter-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    .filter-btn {
+      padding: 10px 20px;
+      background: white;
+      border: 2px solid #e0e0e0;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      font-size: 14px;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .filter-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 25px;
+      margin-bottom: 40px;
+    }
+
+    .palette-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .palette-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .palette-colors {
+      display: flex;
+      height: 120px;
+    }
+
+    .color-block {
+      flex: 1;
+      position: relative;
+      transition: flex 0.3s ease;
+    }
+
+    .palette-card:hover .color-block:hover {
+      flex: 1.5;
+    }
+
+    .color-hex {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.7);
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .palette-card:hover .color-hex {
+      opacity: 1;
+    }
+
+    .palette-info {
+      padding: 20px;
+    }
+
+    .palette-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 5px;
+    }
+
+    .palette-category {
+      font-size: 12px;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .palette-description {
+      font-size: 13px;
+      color: #555;
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .palette-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+    }
+
+    .tag {
+      font-size: 11px;
+      padding: 4px 8px;
+      background: #f0f0f0;
+      border-radius: 4px;
+      color: #666;
+    }
+
+    .use-palette-btn {
+      width: 100%;
+      padding: 10px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 13px;
+    }
+
+    .use-palette-btn:hover {
+      background: #0052cc;
+    }
+
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 30px;
+      text-align: center;
+      border-radius: 12px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: var(--cyan);
+      text-decoration: none;
+      font-weight: 600;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .header { padding: 30px 20px; }
+      .header h1 { font-size: 28px; }
+      .palette-grid { grid-template-columns: 1fr; }
+      .filter-buttons { padding: 15px; gap: 8px; }
+    }
+  </style>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KHBKZ4T8TP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KHBKZ4T8TP');
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🎨 100+ Color Palettes for Branding</h1>
+      <p>Discover curated color schemes for every brand style. Click "Use This Palette" to instantly apply any palette to your brand kit!</p>
+
+      <div class="nav-links">
+        <a href="index.html">🎨 Create Your Brand</a>
+        <a href="showcase.html" class="secondary">✨ Brand Examples</a>
+        <a href="emoji-combos.html" class="secondary">🔥 Emoji Combos</a>
+        <a href="blog.html" class="secondary">📚 Blog</a>
+      </div>
+    </div>
+
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-category="all">All</button>
+      <button class="filter-btn" data-category="bold">Bold</button>
+      <button class="filter-btn" data-category="minimal">Minimal</button>
+      <button class="filter-btn" data-category="playful">Playful</button>
+      <button class="filter-btn" data-category="professional">Professional</button>
+      <button class="filter-btn" data-category="warm">Warm</button>
+      <button class="filter-btn" data-category="cool">Cool</button>
+      <button class="filter-btn" data-category="earthy">Earthy</button>
+    </div>
+
+    <div class="palette-grid" id="paletteGrid">
+      <!-- Palette cards will be inserted here -->
+    </div>
+
+    <footer>
+      <p>
+        <a href="legal-info-about.html#privacy">Privacy Policy</a> |
+        <a href="legal-info-about.html#terms">Terms & Conditions</a> |
+        <a href="legal-info-about.html#about">About Us</a> |
+        <a href="legal-info-about.html#contact">Contact Us</a>
+      </p>
+      <p>&copy; 2025 Play4Tomorrow. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    const colorPalettes = [
+      // BOLD
+      { name: 'Electric Fire', category: 'bold', colors: ['#FF0080', '#FF6B35', '#FFD700'], description: 'High-energy palette for tech and entertainment', tags: ['tech', 'gaming', 'music'] },
+      { name: 'Neon Nights', category: 'bold', colors: ['#00D4FF', '#FF1493', '#39FF14'], description: 'Cyberpunk-inspired vibrant colors', tags: ['tech', 'nightlife', 'events'] },
+      { name: 'Power Play', category: 'bold', colors: ['#DC2626', '#1F2937', '#F59E0B'], description: 'Strong contrast for sports brands', tags: ['fitness', 'sports', 'energy'] },
+      { name: 'Sunset Blaze', category: 'bold', colors: ['#FF6B35', '#F7931E', '#FDC830'], description: 'Warm gradient for creative brands', tags: ['creative', 'photography', 'design'] },
+      { name: 'Royal Flush', category: 'bold', colors: ['#7C3AED', '#EC4899', '#F59E0B'], description: 'Luxurious and attention-grabbing', tags: ['luxury', 'fashion', 'events'] },
+      { name: 'Voltage', category: 'bold', colors: ['#FFD700', '#FF4500', '#1F2937'], description: 'Electric energy meets sophistication', tags: ['tech', 'energy', 'startup'] },
+      { name: 'Cyber Pulse', category: 'bold', colors: ['#00FFE0', '#FF007F', '#4B0082'], description: 'Futuristic digital aesthetic', tags: ['tech', 'gaming', 'digital'] },
+      { name: 'Fire Storm', category: 'bold', colors: ['#FF4500', '#FF6347', '#FFD700'], description: 'Intense heat and passion', tags: ['food', 'energy', 'sports'] },
+
+      // MINIMAL
+      { name: 'Clean Slate', category: 'minimal', colors: ['#FFFFFF', '#1F2937', '#F3F4F6'], description: 'Pure minimalist approach', tags: ['tech', 'design', 'saas'] },
+      { name: 'Monochrome Pro', category: 'minimal', colors: ['#000000', '#6B7280', '#E5E7EB'], description: 'Professional grayscale palette', tags: ['corporate', 'finance', 'consulting'] },
+      { name: 'Soft Touch', category: 'minimal', colors: ['#F9FAFB', '#D1D5DB', '#9CA3AF'], description: 'Gentle neutral tones', tags: ['wellness', 'spa', 'design'] },
+      { name: 'Nordic Light', category: 'minimal', colors: ['#F0F4F8', '#90A4AE', '#546E7A'], description: 'Scandinavian-inspired simplicity', tags: ['furniture', 'design', 'lifestyle'] },
+      { name: 'Ghost White', category: 'minimal', colors: ['#FAFAFA', '#BDBDBD', '#757575'], description: 'Ultra-light minimalism', tags: ['tech', 'portfolio', 'blog'] },
+      { name: 'Steel Frame', category: 'minimal', colors: ['#CFD8DC', '#78909C', '#455A64'], description: 'Industrial minimal aesthetic', tags: ['architecture', 'industrial', 'construction'] },
+      { name: 'Paper Stack', category: 'minimal', colors: ['#FFFFFF', '#E0E0E0', '#424242'], description: 'Clean paper-like layers', tags: ['education', 'writing', 'blog'] },
+      { name: 'Cloud Nine', category: 'minimal', colors: ['#F5F5F5', '#EEEEEE', '#616161'], description: 'Soft cloud-inspired tones', tags: ['saas', 'cloud', 'tech'] },
+
+      // PLAYFUL
+      { name: 'Candy Pop', category: 'playful', colors: ['#FF6B9D', '#FEC601', '#00D9FF'], description: 'Sweet and vibrant candy colors', tags: ['kids', 'toys', 'events'] },
+      { name: 'Rainbow Burst', category: 'playful', colors: ['#FF6B6B', '#FFA500', '#4ECDC4', '#45B7D1'], description: 'Full spectrum fun', tags: ['education', 'kids', 'creative'] },
+      { name: 'Bubblegum Dream', category: 'playful', colors: ['#FFB6D9', '#D4A5FF', '#85E3FF'], description: 'Soft pastel sweetness', tags: ['kids', 'bakery', 'party'] },
+      { name: 'Summer Fun', category: 'playful', colors: ['#FFE66D', '#FF6B6B', '#4ECDC4'], description: 'Bright summer vibes', tags: ['travel', 'beach', 'events'] },
+      { name: 'Toy Box', category: 'playful', colors: ['#FF5E5B', '#FFED66', '#00CECB'], description: 'Vibrant toy-inspired palette', tags: ['kids', 'toys', 'entertainment'] },
+      { name: 'Fruit Salad', category: 'playful', colors: ['#FF6B9D', '#FFB347', '#A8E6CF'], description: 'Fresh and fruity colors', tags: ['food', 'juice', 'healthy'] },
+      { name: 'Cartoon World', category: 'playful', colors: ['#FF6F61', '#6A5ACD', '#FFD700'], description: 'Bold cartoon aesthetics', tags: ['animation', 'kids', 'entertainment'] },
+      { name: 'Party Time', category: 'playful', colors: ['#FF1493', '#00CED1', '#FFD700'], description: 'Festive celebration colors', tags: ['events', 'party', 'entertainment'] },
+
+      // PROFESSIONAL
+      { name: 'Corporate Blue', category: 'professional', colors: ['#0066FF', '#1E40AF', '#F3F4F6'], description: 'Trusted business palette', tags: ['corporate', 'finance', 'consulting'] },
+      { name: 'Executive Suite', category: 'professional', colors: ['#1F2937', '#3B82F6', '#E5E7EB'], description: 'Sophisticated business tones', tags: ['finance', 'consulting', 'legal'] },
+      { name: 'Wall Street', category: 'professional', colors: ['#1E3A8A', '#059669', '#111827'], description: 'Financial authority', tags: ['finance', 'banking', 'investment'] },
+      { name: 'Law Firm', category: 'professional', colors: ['#1F2937', '#991B1B', '#D1D5DB'], description: 'Traditional legal colors', tags: ['legal', 'consulting', 'corporate'] },
+      { name: 'Tech Corp', category: 'professional', colors: ['#0EA5E9', '#64748B', '#F1F5F9'], description: 'Modern tech enterprise', tags: ['tech', 'saas', 'corporate'] },
+      { name: 'Business Class', category: 'professional', colors: ['#334155', '#3B82F6', '#CBD5E1'], description: 'Premium business aesthetic', tags: ['corporate', 'consulting', 'b2b'] },
+      { name: 'Banking Elite', category: 'professional', colors: ['#1E293B', '#0F766E', '#E2E8F0'], description: 'Prestigious financial palette', tags: ['banking', 'wealth', 'finance'] },
+      { name: 'Consultant Pro', category: 'professional', colors: ['#475569', '#2563EB', '#F8FAFC'], description: 'Expert advisory colors', tags: ['consulting', 'b2b', 'professional'] },
+
+      // WARM
+      { name: 'Autumn Harvest', category: 'warm', colors: ['#D97706', '#DC2626', '#92400E'], description: 'Rich fall colors', tags: ['food', 'restaurant', 'coffee'] },
+      { name: 'Sunset Glow', category: 'warm', colors: ['#F59E0B', '#EF4444', '#FDE68A'], description: 'Golden hour warmth', tags: ['photography', 'travel', 'lifestyle'] },
+      { name: 'Campfire', category: 'warm', colors: ['#EA580C', '#78350F', '#FDE047'], description: 'Cozy firelight tones', tags: ['outdoor', 'camping', 'adventure'] },
+      { name: 'Spice Market', category: 'warm', colors: ['#C2410C', '#92400E', '#FCD34D'], description: 'Exotic spice-inspired', tags: ['food', 'restaurant', 'ethnic'] },
+      { name: 'Desert Sand', category: 'warm', colors: ['#D97706', '#92400E', '#FEF3C7'], description: 'Warm desert landscape', tags: ['travel', 'adventure', 'outdoor'] },
+      { name: 'Copper Glow', category: 'warm', colors: ['#B45309', '#78350F', '#FDE68A'], description: 'Metallic warmth', tags: ['luxury', 'jewelry', 'design'] },
+      { name: 'Honey Gold', category: 'warm', colors: ['#F59E0B', '#D97706', '#FEF3C7'], description: 'Sweet golden tones', tags: ['food', 'bakery', 'organic'] },
+      { name: 'Terracotta', category: 'warm', colors: ['#DC2626', '#92400E', '#FED7AA'], description: 'Earthy clay colors', tags: ['pottery', 'craft', 'home'] },
+
+      // COOL
+      { name: 'Ocean Deep', category: 'cool', colors: ['#0066FF', '#00D4FF', '#1A2980'], description: 'Deep water blues', tags: ['water', 'travel', 'tech'] },
+      { name: 'Arctic Ice', category: 'cool', colors: ['#E0F2FE', '#7DD3FC', '#0369A1'], description: 'Frozen tundra palette', tags: ['winter', 'clean', 'fresh'] },
+      { name: 'Night Sky', category: 'cool', colors: ['#1E3A8A', '#7C3AED', '#1E1B4B'], description: 'Starry night colors', tags: ['space', 'astronomy', 'night'] },
+      { name: 'Mint Fresh', category: 'cool', colors: ['#10B981', '#6EE7B7', '#D1FAE5'], description: 'Refreshing mint tones', tags: ['health', 'wellness', 'fresh'] },
+      { name: 'Glacier Blue', category: 'cool', colors: ['#3B82F6', '#60A5FA', '#DBEAFE'], description: 'Cool glacier aesthetic', tags: ['water', 'clean', 'fresh'] },
+      { name: 'Purple Haze', category: 'cool', colors: ['#7C3AED', '#A78BFA', '#EDE9FE'], description: 'Mystical purple gradient', tags: ['creative', 'spiritual', 'music'] },
+      { name: 'Teal Dreams', category: 'cool', colors: ['#0D9488', '#14B8A6', '#CCFBF1'], description: 'Calming teal spectrum', tags: ['wellness', 'spa', 'health'] },
+      { name: 'Sapphire Depths', category: 'cool', colors: ['#1E40AF', '#3B82F6', '#DBEAFE'], description: 'Deep blue gemstone', tags: ['luxury', 'jewelry', 'premium'] },
+
+      // EARTHY
+      { name: 'Forest Fresh', category: 'earthy', colors: ['#10B981', '#059669', '#047857'], description: 'Deep forest greens', tags: ['eco', 'nature', 'organic'] },
+      { name: 'Mountain Moss', category: 'earthy', colors: ['#65A30D', '#4D7C0F', '#365314'], description: 'Natural moss tones', tags: ['outdoor', 'hiking', 'eco'] },
+      { name: 'Earth Clay', category: 'earthy', colors: ['#92400E', '#78350F', '#451A03'], description: 'Rich clay earth tones', tags: ['pottery', 'craft', 'organic'] },
+      { name: 'Sage Garden', category: 'earthy', colors: ['#84CC16', '#65A30D', '#4D7C0F'], description: 'Herbal sage colors', tags: ['wellness', 'organic', 'health'] },
+      { name: 'Stone Path', category: 'earthy', colors: ['#78716C', '#57534E', '#292524'], description: 'Natural stone palette', tags: ['architecture', 'landscaping', 'construction'] },
+      { name: 'Woodland', category: 'earthy', colors: ['#16A34A', '#15803D', '#14532D'], description: 'Deep woodland greens', tags: ['nature', 'outdoor', 'eco'] },
+      { name: 'Mushroom Brown', category: 'earthy', colors: ['#A8A29E', '#78716C', '#44403C'], description: 'Natural fungal tones', tags: ['organic', 'nature', 'earthy'] },
+      { name: 'Bamboo Forest', category: 'earthy', colors: ['#84CC16', '#A3E635', '#D9F99D'], description: 'Fresh bamboo greens', tags: ['eco', 'sustainable', 'asian'] },
+
+      // Additional Palettes for variety
+      { name: 'Lavender Fields', category: 'cool', colors: ['#A78BFA', '#C4B5FD', '#EDE9FE'], description: 'Soft lavender spectrum', tags: ['spa', 'wellness', 'relaxation'] },
+      { name: 'Cherry Blossom', category: 'playful', colors: ['#FCA5A5', '#FBB6CE', '#FEE2E2'], description: 'Delicate spring blooms', tags: ['beauty', 'feminine', 'spring'] },
+      { name: 'Emerald Luxury', category: 'professional', colors: ['#059669', '#10B981', '#D1FAE5'], description: 'Prestigious emerald green', tags: ['luxury', 'wealth', 'premium'] },
+      { name: 'Midnight Code', category: 'bold', colors: ['#1F2937', '#00D4FF', '#FBBF24'], description: 'Developer dark theme', tags: ['tech', 'coding', 'developer'] },
+      { name: 'Rose Gold', category: 'warm', colors: ['#F472B6', '#EC4899', '#FDF2F8'], description: 'Elegant rose gold tones', tags: ['beauty', 'luxury', 'feminine'] },
+      { name: 'Concrete Jungle', category: 'minimal', colors: ['#6B7280', '#4B5563', '#F9FAFB'], description: 'Urban industrial palette', tags: ['urban', 'modern', 'architecture'] },
+      { name: 'Peacock Pride', category: 'bold', colors: ['#06B6D4', '#8B5CF6', '#10B981'], description: 'Vibrant peacock colors', tags: ['creative', 'art', 'luxury'] },
+      { name: 'Matcha Green', category: 'earthy', colors: ['#84CC16', '#A3E635', '#F7FEE7'], description: 'Japanese matcha aesthetic', tags: ['tea', 'wellness', 'organic'] },
+      { name: 'Coral Reef', category: 'playful', colors: ['#FB7185', '#FDA4AF', '#FFE4E6'], description: 'Underwater coral colors', tags: ['ocean', 'travel', 'beach'] },
+      { name: 'Charcoal Pro', category: 'professional', colors: ['#374151', '#6B7280', '#F3F4F6'], description: 'Refined charcoal tones', tags: ['corporate', 'design', 'modern'] },
+      { name: 'Lemon Zest', category: 'playful', colors: ['#FDE047', '#FACC15', '#FEF9C3'], description: 'Fresh citrus energy', tags: ['food', 'fresh', 'energy'] },
+      { name: 'Indigo Night', category: 'cool', colors: ['#4338CA', '#6366F1', '#E0E7FF'], description: 'Deep indigo spectrum', tags: ['premium', 'creative', 'mystical'] },
+      { name: 'Rust & Gold', category: 'warm', colors: ['#B45309', '#D97706', '#FEF3C7'], description: 'Vintage metal patina', tags: ['vintage', 'industrial', 'craft'] },
+      { name: 'Periwinkle Dream', category: 'cool', colors: ['#818CF8', '#A5B4FC', '#E0E7FF'], description: 'Soft periwinkle blue', tags: ['calming', 'wellness', 'sleep'] },
+      { name: 'Brick & Mortar', category: 'earthy', colors: ['#991B1B', '#7C2D12', '#D6D3D1'], description: 'Classic construction palette', tags: ['construction', 'real-estate', 'traditional'] },
+      { name: 'Lime Splash', category: 'playful', colors: ['#84CC16', '#A3E635', '#ECFCCB'], description: 'Energetic lime green', tags: ['energy', 'sports', 'fresh'] },
+      { name: 'Slate Gray', category: 'professional', colors: ['#475569', '#64748B', '#F1F5F9'], description: 'Sophisticated slate tones', tags: ['corporate', 'professional', 'tech'] },
+      { name: 'Tangerine Pop', category: 'bold', colors: ['#FB923C', '#F97316', '#FED7AA'], description: 'Bright citrus burst', tags: ['energy', 'food', 'fun'] },
+      { name: 'Denim Blue', category: 'cool', colors: ['#1E40AF', '#3B82F6', '#BFDBFE'], description: 'Classic denim aesthetic', tags: ['fashion', 'casual', 'lifestyle'] },
+      { name: 'Olive Branch', category: 'earthy', colors: ['#65A30D', '#84CC16', '#ECFCCB'], description: 'Mediterranean olive', tags: ['food', 'organic', 'mediterranean'] },
+      { name: 'Fuchsia Flash', category: 'bold', colors: ['#D946EF', '#E879F9', '#FAE8FF'], description: 'Electric fuchsia energy', tags: ['creative', 'art', 'modern'] },
+      { name: 'Wheat Field', category: 'warm', colors: ['#D97706', '#FDE047', '#FEF9C3'], description: 'Golden wheat harvest', tags: ['bakery', 'organic', 'farm'] },
+      { name: 'Navy Admiral', category: 'professional', colors: ['#1E3A8A', '#3B82F6', '#DBEAFE'], description: 'Naval authority palette', tags: ['maritime', 'professional', 'traditional'] },
+      { name: 'Aqua Marine', category: 'cool', colors: ['#06B6D4', '#22D3EE', '#CFFAFE'], description: 'Tropical ocean water', tags: ['travel', 'beach', 'tropical'] },
+      { name: 'Pumpkin Spice', category: 'warm', colors: ['#EA580C', '#F97316', '#FED7AA'], description: 'Autumn spice blend', tags: ['fall', 'coffee', 'cozy'] },
+      { name: 'Silver Lining', category: 'minimal', colors: ['#E5E7EB', '#D1D5DB', '#9CA3AF'], description: 'Elegant silver tones', tags: ['luxury', 'minimal', 'premium'] },
+      { name: 'Crimson Tide', category: 'bold', colors: ['#BE123C', '#E11D48', '#FFE4E6'], description: 'Deep crimson red', tags: ['power', 'passion', 'bold'] },
+      { name: 'Seafoam', category: 'cool', colors: ['#5EEAD4', '#99F6E4', '#CCFBF1'], description: 'Gentle ocean foam', tags: ['spa', 'calm', 'ocean'] },
+      { name: 'Mahogany Wood', category: 'earthy', colors: ['#7C2D12', '#92400E', '#FED7AA'], description: 'Rich wood tones', tags: ['furniture', 'luxury', 'traditional'] },
+      { name: 'Flamingo Pink', category: 'playful', colors: ['#F472B6', '#FB7185', '#FECDD3'], description: 'Tropical flamingo palette', tags: ['tropical', 'fun', 'beach'] },
+      { name: 'Gunmetal', category: 'professional', colors: ['#374151', '#4B5563', '#D1D5DB'], description: 'Industrial gunmetal', tags: ['industrial', 'tech', 'modern'] },
+      { name: 'Pistachio', category: 'earthy', colors: ['#84CC16', '#A3E635', '#F7FEE7'], description: 'Light nut-inspired green', tags: ['food', 'organic', 'health'] },
+      { name: 'Blueberry', category: 'cool', colors: ['#3730A3', '#4F46E5', '#E0E7FF'], description: 'Fresh berry blue', tags: ['food', 'fresh', 'healthy'] },
+      { name: 'Sandstone', category: 'earthy', colors: ['#D6D3D1', '#A8A29E', '#78716C'], description: 'Desert rock tones', tags: ['architecture', 'natural', 'southwest'] },
+      { name: 'Magenta Magic', category: 'bold', colors: ['#C026D3', '#E879F9', '#FAE8FF'], description: 'Vibrant magenta energy', tags: ['creative', 'bold', 'modern'] },
+      { name: 'Cream & Coffee', category: 'warm', colors: ['#FEF3C7', '#92400E', '#78350F'], description: 'Classic café palette', tags: ['coffee', 'café', 'cozy'] },
+      { name: 'Steel Blue', category: 'cool', colors: ['#0C4A6E', '#0369A1', '#BAE6FD'], description: 'Strong steel aesthetic', tags: ['industrial', 'construction', 'modern'] },
+      { name: 'Burgundy Wine', category: 'warm', colors: ['#881337', '#9F1239', '#FFE4E6'], description: 'Rich wine tones', tags: ['wine', 'luxury', 'restaurant'] }
+    ];
+
+    function createPaletteCard(palette) {
+      const card = document.createElement('div');
+      card.className = 'palette-card';
+      card.dataset.category = palette.category;
+
+      const colorBlocks = palette.colors.map(color => `
+        <div class="color-block" style="background: ${color}">
+          <div class="color-hex">${color}</div>
+        </div>
+      `).join('');
+
+      const tags = palette.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+
+      card.innerHTML = `
+        <div class="palette-colors">
+          ${colorBlocks}
+        </div>
+        <div class="palette-info">
+          <div class="palette-name">${palette.name}</div>
+          <div class="palette-category">${palette.category}</div>
+          <div class="palette-description">${palette.description}</div>
+          <div class="palette-tags">${tags}</div>
+          <button class="use-palette-btn" onclick="usePalette('${palette.colors[0]}', '${palette.name}')">
+            ✨ Use This Palette
+          </button>
+        </div>
+      `;
+
+      return card;
+    }
+
+    function renderPalettes(category = 'all') {
+      const grid = document.getElementById('paletteGrid');
+      grid.innerHTML = '';
+
+      const filtered = category === 'all'
+        ? colorPalettes
+        : colorPalettes.filter(p => p.category === category);
+
+      filtered.forEach(palette => {
+        grid.appendChild(createPaletteCard(palette));
+      });
+    }
+
+    function usePalette(color, name) {
+      // Get current preferences or create new
+      let prefs = {};
+      try {
+        prefs = JSON.parse(localStorage.getItem('brandKitPreferences') || '{}');
+      } catch (e) {}
+
+      // Update color
+      prefs.color = color;
+      prefs.mainText = prefs.mainText || 'Your Brand Name';
+
+      localStorage.setItem('brandKitPreferences', JSON.stringify(prefs));
+      window.location.href = 'index.html';
+    }
+
+    // Filter functionality
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        renderPalettes(this.dataset.category);
+      });
+    });
+
+    // Initial render
+    renderPalettes();
+  </script>
+</body>
+</html>
