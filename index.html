@@ -711,6 +711,7 @@
                 <a href="showcase.html" style="padding: 10px 20px; background: #FF6B35; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.2s;">✨ 50+ Brand Examples</a>
                 <a href="color-palettes.html" style="padding: 10px 20px; background: #10B981; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.2s;">🎨 100+ Color Palettes</a>
                 <a href="emoji-combos.html" style="padding: 10px 20px; background: #8B5CF6; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.2s;">🔥 Emoji Combos</a>
+                <a href="industries/tech-startups.html" style="padding: 10px 20px; background: #EC4899; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.2s;">🏢 Industry Examples</a>
                 <a href="blog.html" style="padding: 10px 20px; background: #0066FF; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.2s;">📚 Blog</a>
             </div>
         </div>
@@ -795,6 +796,36 @@
                         </div>
                     </div>
                     <div class="color-label">Click the square to pick a custom color, or choose a preset</div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label>
+                    <input type="checkbox" id="useGradient" style="margin-right: 8px;" />
+                    Use Gradient Background
+                </label>
+            </div>
+
+            <div class="control-group" id="secondaryColorGroup" style="display: none;">
+                <label for="secondaryColor">Secondary Color (for gradient)</label>
+                <div class="color-picker-wrapper">
+                    <div class="color-display">
+                        <span class="color-value" id="secondaryColorValue">#00D4FF</span>
+                    </div>
+                    <div class="color-info">
+                        <input type="color" id="secondaryColor" value="#00D4FF" aria-label="Select secondary gradient color" />
+                        <div class="color-presets">
+                            <div class="preset-color" style="background: #00D4FF" data-color="#00D4FF" data-secondary="true" title="Cyan"></div>
+                            <div class="preset-color" style="background: #A78BFA" data-color="#A78BFA" data-secondary="true" title="Light Purple"></div>
+                            <div class="preset-color" style="background: #34D399" data-color="#34D399" data-secondary="true" title="Light Green"></div>
+                            <div class="preset-color" style="background: #FCA5A5" data-color="#FCA5A5" data-secondary="true" title="Light Red"></div>
+                            <div class="preset-color" style="background: #FDE047" data-color="#FDE047" data-secondary="true" title="Yellow"></div>
+                            <div class="preset-color" style="background: #F472B6" data-color="#F472B6" data-secondary="true" title="Pink"></div>
+                            <div class="preset-color" style="background: #60A5FA" data-color="#60A5FA" data-secondary="true" title="Light Blue"></div>
+                            <div class="preset-color" style="background: #A3E635" data-color="#A3E635" data-secondary="true" title="Lime"></div>
+                        </div>
+                    </div>
+                    <div class="color-label">Secondary color for gradient effect</div>
                 </div>
             </div>
             
@@ -999,6 +1030,8 @@
                     emoji: selectedEmoji,
                     emojiName: selectedEmojiName,
                     color: document.getElementById('primaryColor')?.value || '#0066FF',
+                    secondaryColor: document.getElementById('secondaryColor')?.value || '#00D4FF',
+                    useGradient: document.getElementById('useGradient')?.checked || false,
                     style: currentStyle,
                     mainText: document.getElementById('mainText')?.value || '',
                     tagline: document.getElementById('tagline')?.value || '',
@@ -1034,6 +1067,14 @@
                     }
                     if (prefs.websiteUrl && document.getElementById('websiteUrl')) {
                         document.getElementById('websiteUrl').value = prefs.websiteUrl;
+                    }
+                    if (prefs.useGradient && document.getElementById('useGradient')) {
+                        document.getElementById('useGradient').checked = true;
+                        document.getElementById('secondaryColorGroup').style.display = 'block';
+                    }
+                    if (prefs.secondaryColor && document.getElementById('secondaryColor')) {
+                        document.getElementById('secondaryColor').value = prefs.secondaryColor;
+                        document.getElementById('secondaryColorValue').textContent = prefs.secondaryColor;
                     }
                     return true;
                 }
@@ -1199,6 +1240,33 @@
                     const color = this.dataset.color;
                     document.getElementById('primaryColor').value = color;
                     updateColorDisplay();
+                    savePreferences();
+                });
+            });
+
+            // Gradient toggle handler
+            document.getElementById('useGradient')?.addEventListener('change', function() {
+                const secondaryGroup = document.getElementById('secondaryColorGroup');
+                if (this.checked) {
+                    secondaryGroup.style.display = 'block';
+                } else {
+                    secondaryGroup.style.display = 'none';
+                }
+                savePreferences();
+            });
+
+            // Secondary color picker
+            document.getElementById('secondaryColor')?.addEventListener('input', function() {
+                document.getElementById('secondaryColorValue').textContent = this.value.toUpperCase();
+                savePreferences();
+            });
+
+            // Secondary color presets
+            document.querySelectorAll('[data-secondary="true"]').forEach(preset => {
+                preset.addEventListener('click', function() {
+                    const color = this.dataset.color;
+                    document.getElementById('secondaryColor').value = color;
+                    document.getElementById('secondaryColorValue').textContent = color;
                     savePreferences();
                 });
             });
@@ -1512,7 +1580,24 @@
             
             return card;
         }
-        
+
+        // Helper function to adjust color brightness for subtle gradients
+        function adjustColorBrightness(hex, percent) {
+            // Convert hex to RGB
+            const num = parseInt(hex.replace('#', ''), 16);
+            const r = (num >> 16) + percent;
+            const g = ((num >> 8) & 0x00FF) + percent;
+            const b = (num & 0x0000FF) + percent;
+
+            // Clamp values between 0 and 255
+            const newR = Math.min(255, Math.max(0, r));
+            const newG = Math.min(255, Math.max(0, g));
+            const newB = Math.min(255, Math.max(0, b));
+
+            // Convert back to hex
+            return '#' + ((newR << 16) | (newG << 8) | newB).toString(16).padStart(6, '0');
+        }
+
         function drawSocialCard(canvas, config) {
             const ctx = canvas.getContext('2d');
             const emoji = selectedEmoji;
@@ -1520,13 +1605,24 @@
             const tagline = document.getElementById('tagline').value;
             const websiteUrl = document.getElementById('websiteUrl').value;
             const primaryColor = document.getElementById('primaryColor').value;
-            
+            const secondaryColor = document.getElementById('secondaryColor').value;
+            const useGradient = document.getElementById('useGradient').checked;
+
             // Background
             if (currentStyle === 'default') {
-                const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-                gradient.addColorStop(0, '#0A0E27');
-                gradient.addColorStop(1, '#050714');
-                ctx.fillStyle = gradient;
+                if (useGradient) {
+                    // User-defined gradient
+                    const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                    gradient.addColorStop(0, primaryColor);
+                    gradient.addColorStop(1, secondaryColor);
+                    ctx.fillStyle = gradient;
+                } else {
+                    // Solid color with subtle gradient
+                    const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                    gradient.addColorStop(0, primaryColor);
+                    gradient.addColorStop(1, adjustColorBrightness(primaryColor, -20));
+                    ctx.fillStyle = gradient;
+                }
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
                 
                 // Decorative circle
@@ -1611,16 +1707,27 @@
             const ctx = canvas.getContext('2d');
             const emoji = selectedEmoji;
             const primaryColor = document.getElementById('primaryColor').value;
-            
+            const secondaryColor = document.getElementById('secondaryColor').value;
+            const useGradient = document.getElementById('useGradient').checked;
+
             // Background
             if (currentStyle === 'minimal' || config.width < 100) {
                 ctx.fillStyle = '#fff';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
             } else {
-                const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-                gradient.addColorStop(0, primaryColor);
-                gradient.addColorStop(1, '#050714');
-                ctx.fillStyle = gradient;
+                if (useGradient) {
+                    // User-defined gradient
+                    const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                    gradient.addColorStop(0, primaryColor);
+                    gradient.addColorStop(1, secondaryColor);
+                    ctx.fillStyle = gradient;
+                } else {
+                    // Subtle gradient with single color
+                    const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                    gradient.addColorStop(0, primaryColor);
+                    gradient.addColorStop(1, adjustColorBrightness(primaryColor, -20));
+                    ctx.fillStyle = gradient;
+                }
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
             }
             
