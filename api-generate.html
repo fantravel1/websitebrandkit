@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Brand Kit Generator API | Website Brand Kit</title>
+    <meta name="description" content="Programmatic brand kit generation API for AI assistants. Generate complete favicon and social image sets via URL parameters.">
+    <link rel="canonical" href="https://www.websitebrandkit.com/api-generate.html">
+    <meta name="robots" content="index, follow">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: #1a1a2e;
+            margin-bottom: 15px;
+        }
+
+        .status {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 5px solid #10B981;
+        }
+
+        .status.error {
+            border-left-color: #EF4444;
+        }
+
+        .status h2 {
+            color: #10B981;
+            margin-bottom: 15px;
+        }
+
+        .status.error h2 {
+            color: #EF4444;
+        }
+
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .preview-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .preview-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #1a1a2e;
+        }
+
+        .preview-image {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 15px;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .preview-image canvas {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .download-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #0066FF;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #0052CC;
+            transform: translateY(-2px);
+        }
+
+        .download-all {
+            background: #10B981;
+            color: white;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin: 30px auto;
+            display: block;
+            transition: all 0.3s;
+        }
+
+        .download-all:hover {
+            background: #059669;
+            transform: scale(1.05);
+        }
+
+        .params-display {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .params-display h3 {
+            margin-bottom: 15px;
+            color: #1a1a2e;
+        }
+
+        .param-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .param-item {
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .param-label {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 4px;
+        }
+
+        .param-value {
+            font-weight: 600;
+            color: #1a1a2e;
+            font-size: 1.1rem;
+        }
+
+        .color-preview {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            vertical-align: middle;
+            margin-left: 8px;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .doc-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background: #8B5CF6;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .doc-link:hover {
+            background: #7C3AED;
+            transform: translateY(-2px);
+        }
+
+        code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 AI Brand Kit Generator</h1>
+            <p>Programmatic brand asset generation via URL parameters</p>
+        </div>
+
+        <div id="statusContainer"></div>
+        <div id="paramsDisplay"></div>
+        <div id="previewContainer"></div>
+
+        <div style="text-align: center;">
+            <a href="ai-docs.html" class="doc-link">📚 View API Documentation</a>
+        </div>
+    </div>
+
+    <script>
+        // Parse URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const format = urlParams.get('format') || 'html';
+
+        const config = {
+            emoji: urlParams.get('emoji') || '🎨',
+            primaryColor: urlParams.get('primaryColor') || '#0066FF',
+            secondaryColor: urlParams.get('secondaryColor') || '#00D4FF',
+            mainText: urlParams.get('mainText') || 'Brand Kit',
+            tagline: urlParams.get('tagline') || 'AI Generated',
+            websiteUrl: urlParams.get('websiteUrl') || '',
+            style: urlParams.get('style') || 'default',
+            useGradient: urlParams.get('useGradient') !== 'false'
+        };
+
+        // Image configurations
+        const imageConfigs = [
+            { name: 'favicon-16x16', width: 16, height: 16, type: 'favicon', format: 'png', description: 'Browser Tab Icon' },
+            { name: 'favicon-32x32', width: 32, height: 32, type: 'favicon', format: 'png', description: 'Browser Tab Icon' },
+            { name: 'apple-touch-icon', width: 180, height: 180, type: 'favicon', format: 'png', description: 'iOS Home Screen' },
+            { name: 'android-chrome-192x192', width: 192, height: 192, type: 'favicon', format: 'png', description: 'Android Icon' },
+            { name: 'android-chrome-512x512', width: 512, height: 512, type: 'favicon', format: 'png', description: 'Android Icon' },
+            { name: 'og-image', width: 1200, height: 630, type: 'social', format: 'jpg', description: 'Open Graph Image' },
+            { name: 'twitter-card', width: 1200, height: 600, type: 'social', format: 'jpg', description: 'Twitter Card' }
+        ];
+
+        // Helper function to adjust color brightness
+        function adjustColorBrightness(hex, percent) {
+            const num = parseInt(hex.replace('#', ''), 16);
+            const r = (num >> 16) + percent;
+            const g = ((num >> 8) & 0x00FF) + percent;
+            const b = (num & 0x0000FF) + percent;
+            const newR = Math.min(255, Math.max(0, r));
+            const newG = Math.min(255, Math.max(0, g));
+            const newB = Math.min(255, Math.max(0, b));
+            return '#' + ((newR << 16) | (newG << 8) | newB).toString(16).padStart(6, '0');
+        }
+
+        // Draw favicon
+        function drawFavicon(canvas, imgConfig) {
+            const ctx = canvas.getContext('2d');
+
+            // Background
+            if (config.style === 'minimal' || imgConfig.width < 100) {
+                ctx.fillStyle = '#fff';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            } else {
+                if (config.useGradient) {
+                    const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                    gradient.addColorStop(0, config.primaryColor);
+                    gradient.addColorStop(1, config.secondaryColor);
+                    ctx.fillStyle = gradient;
+                } else {
+                    const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                    gradient.addColorStop(0, config.primaryColor);
+                    gradient.addColorStop(1, adjustColorBrightness(config.primaryColor, -20));
+                    ctx.fillStyle = gradient;
+                }
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            }
+
+            // Emoji
+            const fontSize = imgConfig.width <= 32 ? imgConfig.width * 0.8 : imgConfig.width * 0.6;
+            ctx.font = `${fontSize}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillStyle = config.style === 'minimal' ? '#000' : '#fff';
+            ctx.fillText(config.emoji, canvas.width / 2, canvas.height / 2);
+        }
+
+        // Draw social card
+        function drawSocialCard(canvas, imgConfig) {
+            const ctx = canvas.getContext('2d');
+
+            // Background
+            if (config.useGradient) {
+                const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                gradient.addColorStop(0, config.primaryColor);
+                gradient.addColorStop(1, config.secondaryColor);
+                ctx.fillStyle = gradient;
+            } else {
+                const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                gradient.addColorStop(0, config.primaryColor);
+                gradient.addColorStop(1, adjustColorBrightness(config.primaryColor, -20));
+                ctx.fillStyle = gradient;
+            }
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Content for OG image
+            if (imgConfig.name === 'og-image') {
+                // Emoji
+                ctx.font = '120px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillStyle = '#fff';
+                ctx.fillText(config.emoji, canvas.width / 2, 200);
+
+                // Main text
+                ctx.font = 'bold 72px Inter';
+                ctx.fillText(config.mainText, canvas.width / 2, 320);
+
+                // Tagline
+                if (config.tagline) {
+                    ctx.font = '32px Inter';
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+                    ctx.fillText(config.tagline, canvas.width / 2, 400);
+                }
+
+                // Website URL
+                if (config.websiteUrl) {
+                    ctx.font = '24px Inter';
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText(config.websiteUrl, canvas.width / 2, 520);
+                }
+            } else {
+                // Twitter card - left aligned
+                ctx.font = '100px Arial';
+                ctx.textAlign = 'left';
+                ctx.fillStyle = '#fff';
+                ctx.fillText(config.emoji, 80, 180);
+
+                ctx.font = 'bold 64px Inter';
+                ctx.fillText(config.mainText, 80, 300);
+
+                if (config.tagline) {
+                    ctx.font = '32px Inter';
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+                    ctx.fillText(config.tagline, 80, 380);
+                }
+
+                if (config.websiteUrl) {
+                    ctx.font = '28px Inter';
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText(config.websiteUrl, 80, 500);
+                }
+            }
+        }
+
+        // Display parameters
+        function displayParams() {
+            const container = document.getElementById('paramsDisplay');
+            container.innerHTML = `
+                <div class="params-display">
+                    <h3>📋 Generation Parameters</h3>
+                    <div class="param-grid">
+                        <div class="param-item">
+                            <div class="param-label">Emoji</div>
+                            <div class="param-value">${config.emoji}</div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-label">Primary Color</div>
+                            <div class="param-value">
+                                ${config.primaryColor}
+                                <span class="color-preview" style="background: ${config.primaryColor};"></span>
+                            </div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-label">Secondary Color</div>
+                            <div class="param-value">
+                                ${config.secondaryColor}
+                                <span class="color-preview" style="background: ${config.secondaryColor};"></span>
+                            </div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-label">Main Text</div>
+                            <div class="param-value">${config.mainText}</div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-label">Tagline</div>
+                            <div class="param-value">${config.tagline || '(none)'}</div>
+                        </div>
+                        <div class="param-item">
+                            <div class="param-label">Style</div>
+                            <div class="param-value">${config.style}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Generate images
+        const generatedImages = {};
+
+        function generateImages() {
+            imageConfigs.forEach(imgConfig => {
+                const canvas = document.createElement('canvas');
+                canvas.width = imgConfig.width;
+                canvas.height = imgConfig.height;
+
+                if (imgConfig.type === 'social') {
+                    drawSocialCard(canvas, imgConfig);
+                } else {
+                    drawFavicon(canvas, imgConfig);
+                }
+
+                generatedImages[`${imgConfig.name}.${imgConfig.format}`] = {
+                    canvas: canvas,
+                    config: imgConfig
+                };
+            });
+        }
+
+        // Display HTML preview
+        function displayHTMLPreview() {
+            const statusContainer = document.getElementById('statusContainer');
+            statusContainer.innerHTML = `
+                <div class="status">
+                    <h2>✅ Brand Kit Generated Successfully</h2>
+                    <p>Your brand kit has been generated with ${imageConfigs.length} images. Preview and download below.</p>
+                </div>
+            `;
+
+            const previewContainer = document.getElementById('previewContainer');
+            let html = '<div class="preview-grid">';
+
+            Object.entries(generatedImages).forEach(([filename, data]) => {
+                const id = filename.replace(/\./g, '-');
+                html += `
+                    <div class="preview-card">
+                        <h3>${data.config.description}</h3>
+                        <div class="preview-image">
+                            <canvas id="preview-${id}"></canvas>
+                        </div>
+                        <p style="font-size: 0.9rem; color: #666; margin-bottom: 10px;">
+                            ${data.config.width}x${data.config.height}px
+                        </p>
+                        <button class="download-btn" onclick="downloadImage('${filename}')">
+                            Download ${filename}
+                        </button>
+                    </div>
+                `;
+            });
+
+            html += '</div>';
+            html += '<button class="download-all" onclick="downloadAll()">📦 Download All as ZIP</button>';
+            previewContainer.innerHTML = html;
+
+            // Draw preview canvases
+            Object.entries(generatedImages).forEach(([filename, data]) => {
+                const id = filename.replace(/\./g, '-');
+                const previewCanvas = document.getElementById(`preview-${id}`);
+                const previewCtx = previewCanvas.getContext('2d');
+
+                // Scale for preview (max 200px)
+                const scale = Math.min(200 / data.config.width, 200 / data.config.height);
+                previewCanvas.width = data.config.width * scale;
+                previewCanvas.height = data.config.height * scale;
+
+                previewCtx.drawImage(data.canvas, 0, 0, previewCanvas.width, previewCanvas.height);
+            });
+        }
+
+        // Return JSON response
+        function returnJSON() {
+            const response = {
+                status: 'success',
+                brandKit: {
+                    emoji: config.emoji,
+                    colors: {
+                        primary: config.primaryColor,
+                        secondary: config.secondaryColor
+                    },
+                    text: {
+                        mainText: config.mainText,
+                        tagline: config.tagline,
+                        websiteUrl: config.websiteUrl
+                    },
+                    style: config.style,
+                    useGradient: config.useGradient
+                },
+                images: {}
+            };
+
+            Object.entries(generatedImages).forEach(([filename, data]) => {
+                const mimeType = data.config.format === 'png' ? 'image/png' : 'image/jpeg';
+                response.images[filename] = data.canvas.toDataURL(mimeType);
+            });
+
+            document.body.innerHTML = `<pre>${JSON.stringify(response, null, 2)}</pre>`;
+            document.body.style.cssText = 'background: #1a1a2e; color: #00ff00; padding: 20px; font-family: monospace;';
+        }
+
+        // Download single image
+        function downloadImage(filename) {
+            const data = generatedImages[filename];
+            const mimeType = data.config.format === 'png' ? 'image/png' : 'image/jpeg';
+            const url = data.canvas.toDataURL(mimeType);
+
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = url;
+            link.click();
+        }
+
+        // Download all as ZIP (requires JSZip library)
+        async function downloadAll() {
+            // Load JSZip dynamically
+            const script = document.createElement('script');
+            script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
+            script.onload = async () => {
+                const zip = new JSZip();
+
+                Object.entries(generatedImages).forEach(([filename, data]) => {
+                    const mimeType = data.config.format === 'png' ? 'image/png' : 'image/jpeg';
+                    const base64Data = data.canvas.toDataURL(mimeType).split(',')[1];
+                    zip.file(filename, base64Data, { base64: true });
+                });
+
+                const blob = await zip.generateAsync({ type: 'blob' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.download = 'brand-kit.zip';
+                link.href = url;
+                link.click();
+                URL.revokeObjectURL(url);
+            };
+            document.head.appendChild(script);
+        }
+
+        // Initialize
+        displayParams();
+        generateImages();
+
+        if (format === 'json') {
+            returnJSON();
+        } else {
+            displayHTMLPreview();
+        }
+    </script>
+</body>
+</html>
