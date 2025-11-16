@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI API Documentation | Website Brand Kit Generator</title>
+    <meta name="description" content="API documentation for AI assistants to programmatically generate brand kits. Complete guide for Claude Code, GitHub Copilot, ChatGPT, and Cursor.">
+    <link rel="canonical" href="https://www.websitebrandkit.com/ai-docs.html">
+    <meta name="robots" content="index, follow">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "AI Brand Kit Generator API Documentation",
+        "description": "Complete API documentation for programmatic brand asset generation",
+        "url": "https://www.websitebrandkit.com/ai-docs.html"
+    }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0066FF;
+            --dark: #1a1a2e;
+            --code-bg: #1e1e1e;
+            --code-text: #d4d4d4;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 80px 20px 60px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            margin: 50px 0 25px;
+            color: var(--dark);
+        }
+
+        h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            margin: 35px 0 20px;
+            color: var(--dark);
+        }
+
+        .section {
+            margin: 40px 0;
+        }
+
+        .endpoint-box {
+            background: #f8f9fa;
+            border-left: 5px solid var(--primary);
+            border-radius: 8px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .endpoint-url {
+            font-family: 'Fira Code', monospace;
+            font-size: 1.1rem;
+            color: var(--primary);
+            word-break: break-all;
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+
+        .params-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .params-table th {
+            background: var(--dark);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .params-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .params-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .param-name {
+            font-family: 'Fira Code', monospace;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .param-required {
+            background: #EF4444;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .param-optional {
+            background: #10B981;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        code {
+            background: var(--code-bg);
+            color: var(--code-text);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background: var(--code-bg);
+            color: var(--code-text);
+            padding: 25px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 25px 0;
+            font-family: 'Fira Code', monospace;
+            line-height: 1.6;
+        }
+
+        .example-card {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .example-card h4 {
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .use-case {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 25px 0;
+        }
+
+        .use-case h4 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .try-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin: 10px 10px 10px 0;
+            transition: all 0.3s;
+        }
+
+        .try-button:hover {
+            background: #0052CC;
+            transform: translateY(-2px);
+        }
+
+        .info-box {
+            background: #E0F2FE;
+            border-left: 5px solid #0EA5E9;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+
+        .warning-box {
+            background: #FEF3C7;
+            border-left: 5px solid #F59E0B;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 20px 40px;
+            }
+
+            .container {
+                padding: 40px 20px;
+            }
+
+            .params-table {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>🤖 AI Brand Kit Generator API</h1>
+        <p class="subtitle">Programmatic brand asset generation for AI assistants and developers</p>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h2>Overview</h2>
+            <p>The Brand Kit Generator API allows AI assistants (Claude Code, GitHub Copilot, ChatGPT, Cursor) and developers to programmatically generate complete brand asset sets via simple URL parameters.</p>
+
+            <div class="info-box">
+                <strong>💡 Perfect for:</strong> Automated project setup, CLI tools, CI/CD pipelines, chatbots, and AI-assisted development workflows.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>API Endpoint</h2>
+            <div class="endpoint-box">
+                <p><strong>Base URL:</strong></p>
+                <div class="endpoint-url">
+                    https://www.websitebrandkit.com/api-generate.html
+                </div>
+                <p><strong>Method:</strong> GET</p>
+                <p><strong>Response Formats:</strong> HTML (default) or JSON</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Parameters</h2>
+            <table class="params-table">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Required</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="param-name">emoji</span></td>
+                        <td>String</td>
+                        <td><span class="param-optional">Optional</span></td>
+                        <td>Any emoji character for brand icon</td>
+                        <td>🎨</td>
+                    </tr>
+                    <tr>
+                        <td><span class="param-name">primaryColor</span></td>
+                        <td>String</td>
+                        <td><span class="param-optional">Optional</span></td>
+                        <td>Hex color code (URL encoded)</td>
+                        <td>#0066FF</td>
+                    </tr>
+                    <tr>
+                        <td><span class="param-name">secondaryColor</span></td>
+                        <td>String</td>
+                        <td><span class="param-optional">Optional</span></td>
+                        <td>Hex color for gradients (URL encoded)</td>
+                        <td>#00D4FF</td>
+                    </tr>
+                    <tr>
+                        <td><span class="param-name">mainText</span></td>
+                        <td>String</td>
+                        <td><span class="param-optional">Optional</span></td>
+                        <td>Brand/project name</td>
+                        <td>Brand Kit</td>
+                    </tr>
+                    <tr>
+                        <td><span class="param-name">tagline</span></td>
+                        <td>String</td>
+                        <td><span class="param-optional">Optional</span></td>
+                        <td>Brand tagline/slogan</td>
+                        <td>AI Generated</td>
+                    </tr>
+                    <tr>
+                        <td><span class="param-name">websiteUrl</span></td>
+                        <td>String</td>
+                        <td><span class="param-optional">Optional</span></td>
+                        <td>Website URL to display</td>
+                        <td>(empty)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="param-name">style</span></td>
+                        <td>String</td>
+                        <td><span class="param-optional">Optional</span></td>
+                        <td>default, minimal, or bold</td>
+                        <td>default</td>
+                    </tr>
+                    <tr>
+                        <td><span class="param-name">useGradient</span></td>
+                        <td>Boolean</td>
+                        <td><span class="param-optional">Optional</span></td>
+                        <td>Use dual-color gradient</td>
+                        <td>true</td>
+                    </tr>
+                    <tr>
+                        <td><span class="param-name">format</span></td>
+                        <td>String</td>
+                        <td><span class="param-optional">Optional</span></td>
+                        <td>html or json</td>
+                        <td>html</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="warning-box">
+                <strong>⚠️ URL Encoding:</strong> Remember to URL encode color codes and special characters.<br>
+                Example: <code>#0066FF</code> → <code>%230066FF</code>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Generated Assets</h2>
+            <p>Each API call generates 7 optimized image assets:</p>
+            <ul style="margin: 20px 0 20px 30px; line-height: 2;">
+                <li><strong>favicon-16x16.png</strong> - Browser tab icon (16×16px)</li>
+                <li><strong>favicon-32x32.png</strong> - Browser tab icon (32×32px)</li>
+                <li><strong>apple-touch-icon.png</strong> - iOS home screen (180×180px)</li>
+                <li><strong>android-chrome-192x192.png</strong> - Android icon (192×192px)</li>
+                <li><strong>android-chrome-512x512.png</strong> - Android icon (512×512px)</li>
+                <li><strong>og-image.jpg</strong> - Open Graph social share (1200×630px)</li>
+                <li><strong>twitter-card.jpg</strong> - Twitter card (1200×600px)</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Examples</h2>
+
+            <div class="example-card">
+                <h4>Example 1: Basic HTML Response</h4>
+                <p>Generate a brand kit with preview and download interface:</p>
+                <div class="endpoint-url">
+https://www.websitebrandkit.com/api-generate.html?emoji=🚀&primaryColor=%230066FF&secondaryColor=%2300D4FF&mainText=RocketApp&tagline=Launch%20Fast
+                </div>
+                <a href="api-generate.html?emoji=🚀&primaryColor=%230066FF&secondaryColor=%2300D4FF&mainText=RocketApp&tagline=Launch%20Fast" target="_blank" class="try-button">Try This Example →</a>
+            </div>
+
+            <div class="example-card">
+                <h4>Example 2: JSON Response for Automation</h4>
+                <p>Get structured JSON with base64-encoded images for programmatic use:</p>
+                <div class="endpoint-url">
+https://www.websitebrandkit.com/api-generate.html?emoji=💎&primaryColor=%238B5CF6&secondaryColor=%23EC4899&mainText=LuxBrand&format=json
+                </div>
+                <a href="api-generate.html?emoji=💎&primaryColor=%238B5CF6&secondaryColor=%23EC4899&mainText=LuxBrand&format=json" target="_blank" class="try-button">Try This Example →</a>
+            </div>
+
+            <div class="example-card">
+                <h4>Example 3: Minimal Style</h4>
+                <p>Simple, clean design for professional brands:</p>
+                <div class="endpoint-url">
+https://www.websitebrandkit.com/api-generate.html?emoji=📊&primaryColor=%23000000&style=minimal&mainText=Analytics&useGradient=false
+                </div>
+                <a href="api-generate.html?emoji=📊&primaryColor=%23000000&style=minimal&mainText=Analytics&useGradient=false" target="_blank" class="try-button">Try This Example →</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>JSON Response Format</h2>
+            <p>When using <code>format=json</code>, the API returns:</p>
+            <pre>{
+  "status": "success",
+  "brandKit": {
+    "emoji": "🚀",
+    "colors": {
+      "primary": "#0066FF",
+      "secondary": "#00D4FF"
+    },
+    "text": {
+      "mainText": "RocketApp",
+      "tagline": "Launch Fast",
+      "websiteUrl": ""
+    },
+    "style": "default",
+    "useGradient": true
+  },
+  "images": {
+    "favicon-16x16.png": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...",
+    "favicon-32x32.png": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...",
+    "apple-touch-icon.png": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...",
+    "android-chrome-192x192.png": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...",
+    "android-chrome-512x512.png": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...",
+    "og-image.jpg": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAA...",
+    "twitter-card.jpg": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAA..."
+  }
+}</pre>
+        </div>
+
+        <div class="section">
+            <h2>AI Assistant Use Cases</h2>
+
+            <div class="use-case">
+                <h4>🤖 Claude Code</h4>
+                <p>Generate favicons during project initialization:</p>
+                <pre style="margin-top: 15px;">// User: "Create a brand kit for my new app called DataViz with a chart emoji"
+
+// Claude Code can:
+1. Generate the API URL with user parameters
+2. Fetch the JSON response
+3. Save all base64 images to /public/icons/
+4. Update index.html with proper favicon links</pre>
+            </div>
+
+            <div class="use-case">
+                <h4>💻 GitHub Copilot</h4>
+                <p>Quick brand asset generation in VS Code:</p>
+                <pre style="margin-top: 15px;">// Comment: "Generate brand assets for FitTrack app (💪, red/orange)"
+
+// Copilot can suggest:
+const apiUrl = 'https://www.websitebrandkit.com/api-generate.html?' +
+  'emoji=💪&primaryColor=%23EF4444&secondaryColor=%23F59E0B' +
+  '&mainText=FitTrack&format=json';
+
+const response = await fetch(apiUrl);
+const brandKit = await response.json();</pre>
+            </div>
+
+            <div class="use-case">
+                <h4>💬 ChatGPT / Custom GPTs</h4>
+                <p>Conversational brand kit creation:</p>
+                <pre style="margin-top: 15px;">User: "I need a brand kit for my coffee shop called BeanScene"
+
+GPT: "I'll create a brand kit with a coffee emoji ☕ and warm brown tones.
+      Here's your download link:
+
+      https://www.websitebrandkit.com/api-generate.html?
+      emoji=☕&primaryColor=%2392400E&secondaryColor=%23EA580C
+      &mainText=BeanScene&tagline=Fresh%20Roasted%20Daily"</pre>
+            </div>
+
+            <div class="use-case">
+                <h4>⚡ Cursor IDE</h4>
+                <p>AI-assisted development workflow:</p>
+                <pre style="margin-top: 15px;">// In project setup:
+// User selects "Generate brand assets"
+
+// Cursor AI can:
+1. Ask for brand details (name, emoji, colors)
+2. Call API with JSON format
+3. Create /assets/brand/ directory
+4. Save all images with proper names
+5. Generate manifest.json
+6. Update HTML meta tags</pre>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Code Examples</h2>
+
+            <h3>JavaScript/Node.js</h3>
+            <pre>async function generateBrandKit(config) {
+  const params = new URLSearchParams({
+    emoji: config.emoji,
+    primaryColor: config.primaryColor,
+    secondaryColor: config.secondaryColor,
+    mainText: config.mainText,
+    tagline: config.tagline || '',
+    format: 'json'
+  });
+
+  const response = await fetch(
+    `https://www.websitebrandkit.com/api-generate.html?${params}`
+  );
+
+  const data = await response.json();
+
+  // Save images
+  for (const [filename, dataUrl] of Object.entries(data.images)) {
+    const base64Data = dataUrl.split(',')[1];
+    const buffer = Buffer.from(base64Data, 'base64');
+    await fs.writeFile(`./public/${filename}`, buffer);
+  }
+
+  return data;
+}
+
+// Usage
+await generateBrandKit({
+  emoji: '🚀',
+  primaryColor: '#0066FF',
+  secondaryColor: '#00D4FF',
+  mainText: 'MyApp',
+  tagline: 'Launch Fast'
+});</pre>
+
+            <h3>Python</h3>
+            <pre>import requests
+import base64
+from urllib.parse import urlencode
+
+def generate_brand_kit(config):
+    params = {
+        'emoji': config['emoji'],
+        'primaryColor': config['primaryColor'],
+        'secondaryColor': config['secondaryColor'],
+        'mainText': config['mainText'],
+        'tagline': config.get('tagline', ''),
+        'format': 'json'
+    }
+
+    url = f"https://www.websitebrandkit.com/api-generate.html?{urlencode(params)}"
+    response = requests.get(url)
+    data = response.json()
+
+    # Save images
+    for filename, data_url in data['images'].items():
+        base64_data = data_url.split(',')[1]
+        image_data = base64.b64decode(base64_data)
+
+        with open(f'./public/{filename}', 'wb') as f:
+            f.write(image_data)
+
+    return data
+
+# Usage
+generate_brand_kit({
+    'emoji': '🚀',
+    'primaryColor': '#0066FF',
+    'secondaryColor': '#00D4FF',
+    'mainText': 'MyApp',
+    'tagline': 'Launch Fast'
+})</pre>
+
+            <h3>cURL</h3>
+            <pre>curl "https://www.websitebrandkit.com/api-generate.html?\
+emoji=🚀&\
+primaryColor=%230066FF&\
+secondaryColor=%2300D4FF&\
+mainText=MyApp&\
+tagline=Launch%20Fast&\
+format=json" \
+  -o brand-kit.json</pre>
+        </div>
+
+        <div class="section">
+            <h2>Rate Limits & Best Practices</h2>
+            <div class="info-box">
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li><strong>No authentication required</strong> - Free to use</li>
+                    <li><strong>Reasonable use policy</strong> - Don't abuse the service</li>
+                    <li><strong>Cache responses</strong> - Save generated assets locally</li>
+                    <li><strong>URL encode parameters</strong> - Especially colors and special characters</li>
+                    <li><strong>Handle errors gracefully</strong> - Check response status</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Support & Feedback</h2>
+            <p>Have questions or suggestions? We'd love to hear from you!</p>
+            <ul style="margin: 20px 0 20px 30px; line-height: 2;">
+                <li>Report issues: <a href="https://github.com/anthropics/claude-code/issues" style="color: var(--primary);">GitHub Issues</a></li>
+                <li>Documentation: <a href="index.html" style="color: var(--primary);">Main Generator Tool</a></li>
+                <li>Examples: <a href="brand-templates.html" style="color: var(--primary);">30+ Brand Templates</a></li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin: 60px 0;">
+            <a href="api-generate.html?emoji=🎨&primaryColor=%230066FF&secondaryColor=%2300D4FF&mainText=Test%20Brand" class="try-button" style="font-size: 1.2rem; padding: 16px 32px;">
+                🚀 Try the API Now
+            </a>
+        </div>
+    </div>
+</body>
+</html>
