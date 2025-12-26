@@ -529,19 +529,414 @@
         .emoji-grid::-webkit-scrollbar {
             width: 8px;
         }
-        
+
         .emoji-grid::-webkit-scrollbar-track {
             background: #f0f0f0;
             border-radius: 4px;
         }
-        
+
         .emoji-grid::-webkit-scrollbar-thumb {
             background: #ccc;
             border-radius: 4px;
         }
-        
+
         .emoji-grid::-webkit-scrollbar-thumb:hover {
             background: #aaa;
+        }
+
+        /* Live Preview Styles */
+        .live-preview-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .live-preview-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .live-preview-header h2 {
+            margin: 0;
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--dark);
+        }
+
+        .live-preview-badge {
+            background: linear-gradient(135deg, #10B981, #34D399);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .live-preview-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .preview-item {
+            text-align: center;
+        }
+
+        .preview-item-label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .preview-favicon {
+            width: 64px;
+            height: 64px;
+            border-radius: 12px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+
+        .preview-social {
+            width: 100%;
+            max-width: 300px;
+            aspect-ratio: 1200/630;
+            border-radius: 8px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+
+        .preview-social-emoji {
+            font-size: 36px;
+            margin-bottom: 8px;
+        }
+
+        .preview-social-text {
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+            text-align: center;
+            word-break: break-word;
+        }
+
+        .preview-social-tagline {
+            font-size: 10px;
+            color: rgba(255,255,255,0.8);
+            margin-top: 4px;
+            text-align: center;
+        }
+
+        .preview-browser-tab {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #f1f3f4;
+            border-radius: 8px 8px 0 0;
+            padding: 8px 12px;
+            max-width: 200px;
+            margin: 0 auto;
+            border: 1px solid #ddd;
+            border-bottom: none;
+        }
+
+        .preview-browser-tab-icon {
+            width: 16px;
+            height: 16px;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+        }
+
+        .preview-browser-tab-title {
+            font-size: 12px;
+            color: #333;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            flex: 1;
+        }
+
+        /* Enhanced Emoji Grid Styles */
+        .emoji-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+            gap: 8px;
+            max-height: 350px;
+            overflow-y: auto;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+        }
+
+        .emoji-option {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            cursor: pointer;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+            position: relative;
+        }
+
+        .emoji-option:hover {
+            background: #f0f0f0;
+            transform: scale(1.1);
+        }
+
+        .emoji-option:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1a1a2e;
+            color: white;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            white-space: nowrap;
+            z-index: 100;
+            pointer-events: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .emoji-option:hover::before {
+            content: '';
+            position: absolute;
+            bottom: calc(100% + 2px);
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: #1a1a2e;
+            z-index: 100;
+        }
+
+        /* Style Selector with Thumbnails */
+        .style-option {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .style-option:hover {
+            border-color: #ccc;
+            transform: translateY(-2px);
+        }
+
+        .style-thumbnail {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .style-thumbnail-default {
+            background: linear-gradient(135deg, #0066FF, #00D4FF);
+            color: white;
+        }
+
+        .style-thumbnail-bold {
+            background: #000;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .style-thumbnail-bold::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 8px,
+                rgba(255,255,255,0.05) 8px,
+                rgba(255,255,255,0.05) 9px
+            );
+        }
+
+        .style-thumbnail-minimal {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            color: #333;
+        }
+
+        /* Download Section Improvements */
+        .download-section {
+            margin-bottom: 40px;
+        }
+
+        .download-section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .download-section-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .download-section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            color: var(--dark);
+            margin: 0;
+        }
+
+        .download-section-count {
+            background: #f0f0f0;
+            color: #666;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .html-code-section {
+            background: #1a1a2e;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        .html-code-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .html-code-title {
+            color: white;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .copy-code-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .copy-code-btn:hover {
+            background: #0052cc;
+            transform: translateY(-1px);
+        }
+
+        .copy-code-btn.copied {
+            background: #10B981;
+        }
+
+        .html-code-block {
+            background: #0d0d1a;
+            border-radius: 8px;
+            padding: 20px;
+            overflow-x: auto;
+            font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
+
+        .html-code-block code {
+            color: #e0e0e0;
+        }
+
+        .html-code-block .tag {
+            color: #f472b6;
+        }
+
+        .html-code-block .attr {
+            color: #60a5fa;
+        }
+
+        .html-code-block .value {
+            color: #34d399;
+        }
+
+        .html-code-block .comment {
+            color: #6b7280;
+        }
+
+        .asset-description {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+            font-size: 13px;
+        }
+
+        .asset-description-icon {
+            font-size: 16px;
         }
 
         /* Descriptive content block */
@@ -604,6 +999,17 @@
 
             .style-option {
                 width: 100%;
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                text-align: left;
+            }
+
+            .style-thumbnail {
+                width: 60px;
+                height: 60px;
+                margin: 0;
+                flex-shrink: 0;
             }
 
             .emoji-picker-wrapper {
@@ -611,14 +1017,19 @@
             }
 
             .emoji-grid {
-                grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
                 gap: 8px;
             }
 
             .emoji-option {
                 font-size: 28px;
-                width: 45px;
-                height: 45px;
+                width: 60px;
+                height: 60px;
+            }
+
+            .emoji-option:hover::after,
+            .emoji-option:hover::before {
+                display: none;
             }
 
             .emoji-categories {
@@ -656,6 +1067,39 @@
                 padding: 15px;
                 font-size: 14px;
             }
+
+            .live-preview-section {
+                padding: 20px;
+            }
+
+            .live-preview-header {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+
+            .preview-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .html-code-section {
+                padding: 15px;
+            }
+
+            .html-code-header {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+
+            .html-code-block {
+                font-size: 11px;
+                padding: 15px;
+            }
+
+            .download-section-header {
+                flex-wrap: wrap;
+            }
         }
 
         @media (max-width: 480px) {
@@ -672,14 +1116,14 @@
             }
 
             .emoji-grid {
-                grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(55px, 1fr));
                 gap: 6px;
             }
 
             .emoji-option {
                 font-size: 24px;
-                width: 40px;
-                height: 40px;
+                width: 55px;
+                height: 55px;
             }
 
             .preset-color {
@@ -690,6 +1134,12 @@
             .category-btn {
                 font-size: 12px;
                 padding: 6px 10px;
+            }
+
+            .style-thumbnail {
+                width: 50px;
+                height: 50px;
+                font-size: 22px;
             }
         }
 
@@ -786,16 +1236,25 @@
             
             <div class="style-selector">
                 <div class="style-option active" data-style="default">
-                    <h4>Default Style</h4>
-                    <p>Clean, professional gradient</p>
+                    <div class="style-thumbnail style-thumbnail-default" id="styleThumbnailDefault">🚀</div>
+                    <div>
+                        <h4>Default Style</h4>
+                        <p>Clean, professional gradient</p>
+                    </div>
                 </div>
                 <div class="style-option" data-style="bold">
-                    <h4>Bold Style</h4>
-                    <p>High contrast with patterns</p>
+                    <div class="style-thumbnail style-thumbnail-bold" id="styleThumbnailBold">🚀</div>
+                    <div>
+                        <h4>Bold Style</h4>
+                        <p>High contrast with patterns</p>
+                    </div>
                 </div>
                 <div class="style-option" data-style="minimal">
-                    <h4>Minimal Style</h4>
-                    <p>Simple and elegant</p>
+                    <div class="style-thumbnail style-thumbnail-minimal" id="styleThumbnailMinimal">🚀</div>
+                    <div>
+                        <h4>Minimal Style</h4>
+                        <p>Simple and elegant</p>
+                    </div>
                 </div>
             </div>
             
@@ -898,19 +1357,99 @@
                 <label for="websiteUrl">Website URL</label>
                 <input type="text" id="websiteUrl" value="yourwebsite.com" placeholder="yourwebsite.com" />
             </div>
-            
+
+            <!-- Live Preview Section -->
+            <div class="live-preview-section" style="background: #f8f9fa; margin-top: 20px; border: 2px dashed #e0e0e0;">
+                <div class="live-preview-header">
+                    <h2>Live Preview</h2>
+                    <span class="live-preview-badge">Updates in real-time</span>
+                </div>
+                <div class="preview-grid">
+                    <div class="preview-item">
+                        <div class="preview-item-label">Favicon Preview</div>
+                        <div class="preview-favicon" id="previewFavicon">🎨</div>
+                        <div style="margin-top: 15px;">
+                            <div class="preview-item-label">Browser Tab</div>
+                            <div class="preview-browser-tab">
+                                <div class="preview-browser-tab-icon" id="previewTabIcon">🎨</div>
+                                <div class="preview-browser-tab-title" id="previewTabTitle">Your Brand Name</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="preview-item">
+                        <div class="preview-item-label">Social Card Preview</div>
+                        <div class="preview-social" id="previewSocial">
+                            <div class="preview-social-emoji" id="previewSocialEmoji">🎨</div>
+                            <div class="preview-social-text" id="previewSocialText">Your Brand Name</div>
+                            <div class="preview-social-tagline" id="previewSocialTagline">Your inspiring tagline here</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <button class="generate-btn" onclick="generateAllImages()">Generate All Images</button>
         </div>
         
         <div id="imageContainer" class="hidden">
-            <h2 style="margin: 30px 0;">Generated Images</h2>
+            <h2 style="margin: 30px 0; font-family: 'Space Grotesk', sans-serif;">Generated Images</h2>
             <div style="text-align: center; margin-bottom: 30px;">
                 <button class="generate-btn" onclick="downloadAllAsZip()" style="background: var(--secondary); max-width: 400px;">
                     📦 Download All as ZIP
                 </button>
             </div>
-            <div class="image-grid" id="imageGrid">
-                <!-- Images will be generated here -->
+
+            <!-- Social Media Section -->
+            <div class="download-section" id="socialMediaSection">
+                <div class="download-section-header">
+                    <div class="download-section-icon" style="background: linear-gradient(135deg, #EC4899, #F472B6);">🌐</div>
+                    <h3 class="download-section-title">Social Media Images</h3>
+                    <span class="download-section-count">2 files</span>
+                </div>
+                <div class="image-grid" id="socialMediaGrid">
+                    <!-- Social media images will be generated here -->
+                </div>
+            </div>
+
+            <!-- Favicons Section -->
+            <div class="download-section" id="faviconsSection">
+                <div class="download-section-header">
+                    <div class="download-section-icon" style="background: linear-gradient(135deg, #0066FF, #00D4FF);">⭐</div>
+                    <h3 class="download-section-title">Favicons</h3>
+                    <span class="download-section-count">3 files</span>
+                </div>
+                <div class="image-grid" id="faviconsGrid">
+                    <!-- Favicon images will be generated here -->
+                </div>
+            </div>
+
+            <!-- Mobile Icons Section -->
+            <div class="download-section" id="mobileIconsSection">
+                <div class="download-section-header">
+                    <div class="download-section-icon" style="background: linear-gradient(135deg, #10B981, #34D399);">📱</div>
+                    <h3 class="download-section-title">Mobile Icons</h3>
+                    <span class="download-section-count">4 files</span>
+                </div>
+                <div class="image-grid" id="mobileIconsGrid">
+                    <!-- Mobile icons will be generated here -->
+                </div>
+            </div>
+
+            <!-- HTML Installation Code Section -->
+            <div class="html-code-section" id="htmlCodeSection">
+                <div class="html-code-header">
+                    <div class="html-code-title">
+                        <span>💻</span>
+                        <span>Installation Code</span>
+                    </div>
+                    <button class="copy-code-btn" onclick="copyHtmlCode()">
+                        <span id="copyBtnIcon">📋</span>
+                        <span id="copyBtnText">Copy Code</span>
+                    </button>
+                </div>
+                <p style="color: #9ca3af; margin-bottom: 15px; font-size: 14px;">Add this code to your HTML <code style="background: #374151; padding: 2px 6px; border-radius: 4px;">&lt;head&gt;</code> section:</p>
+                <div class="html-code-block">
+                    <pre id="htmlCodeContent"><!-- Code will be generated here --></pre>
+                </div>
             </div>
         </div>
     </div>
@@ -1339,10 +1878,35 @@
             // Save preferences when color changes
             document.getElementById('primaryColor')?.addEventListener('change', savePreferences);
 
-            // Save preferences when text inputs change
+            // Add live preview updates for text inputs
             ['mainText', 'tagline', 'websiteUrl'].forEach(id => {
-                document.getElementById(id)?.addEventListener('input', debounce(savePreferences, 1000));
+                const el = document.getElementById(id);
+                if (el) {
+                    el.addEventListener('input', function() {
+                        updateLivePreview();
+                        debounce(savePreferences, 1000)();
+                    });
+                }
             });
+
+            // Add live preview update for color inputs
+            document.getElementById('primaryColor')?.addEventListener('input', function() {
+                updateColorDisplay();
+                updateLivePreview();
+            });
+
+            document.getElementById('secondaryColor')?.addEventListener('input', function() {
+                updateLivePreview();
+            });
+
+            // Update live preview when gradient toggle changes
+            const gradientCheckbox = document.getElementById('useGradient');
+            if (gradientCheckbox) {
+                const originalHandler = gradientCheckbox.onchange;
+                gradientCheckbox.addEventListener('change', function() {
+                    updateLivePreview();
+                });
+            }
 
             // Style selector save
             document.querySelectorAll('.style-option').forEach(option => {
@@ -1351,6 +1915,10 @@
                     savePreferences();
                 });
             });
+
+            // Initialize live preview and style thumbnails
+            updateStyleThumbnails();
+            updateLivePreview();
         });
 
         // Debounce function for input events
@@ -1366,19 +1934,22 @@
             };
         }
         
-        // Populate emoji grid
+        // Populate emoji grid with enhanced tooltips
         function populateEmojis(category) {
             const grid = document.getElementById('emojiGrid');
             grid.innerHTML = '';
-            
+
             const emojis = category === 'all' ? getAllEmojis() : emojiDatabase[category] || [];
-            
+
             emojis.forEach(item => {
                 const div = document.createElement('div');
                 div.className = 'emoji-option';
                 div.textContent = item.emoji;
                 div.title = item.name;
                 div.dataset.name = item.name;
+                // Enhanced tooltip with keywords
+                const keywordHint = item.keywords.slice(0, 2).join(', ');
+                div.dataset.tooltip = `${item.name} — ${keywordHint}`;
                 div.setAttribute('role', 'button');
                 div.setAttribute('aria-label', item.name + ' emoji');
                 div.setAttribute('tabindex', '0');
@@ -1398,7 +1969,7 @@
                         selectEmoji(item.emoji, item.name);
                     }
                 });
-                
+
                 grid.appendChild(div);
             });
         }
@@ -1441,6 +2012,9 @@
                 div.className = 'emoji-option';
                 div.textContent = item.emoji;
                 div.title = item.name;
+                // Enhanced tooltip with keywords
+                const keywordHint = item.keywords.slice(0, 2).join(', ');
+                div.dataset.tooltip = `${item.name} — ${keywordHint}`;
                 div.setAttribute('role', 'button');
                 div.setAttribute('aria-label', item.name + ' emoji');
                 div.setAttribute('tabindex', '0');
@@ -1469,10 +2043,10 @@
         function selectEmoji(emoji, name) {
             selectedEmoji = emoji;
             selectedEmojiName = name;
-            
+
             document.getElementById('selectedEmoji').textContent = emoji;
             document.getElementById('selectedEmojiName').textContent = name;
-            
+
             // Update selected state
             document.querySelectorAll('.emoji-option').forEach(opt => {
                 opt.classList.remove('selected');
@@ -1480,7 +2054,7 @@
                     opt.classList.add('selected');
                 }
             });
-            
+
             // Find category
             let foundCategory = 'Other';
             for (const [cat, items] of Object.entries(emojiDatabase)) {
@@ -1490,6 +2064,94 @@
                 }
             }
             document.getElementById('selectedEmojiCategory').textContent = foundCategory;
+
+            // Update style thumbnails with selected emoji
+            updateStyleThumbnails();
+
+            // Update live preview
+            updateLivePreview();
+
+            // Save preferences
+            savePreferences();
+        }
+
+        // Update style thumbnails with current emoji
+        function updateStyleThumbnails() {
+            const thumbnails = ['styleThumbnailDefault', 'styleThumbnailBold', 'styleThumbnailMinimal'];
+            thumbnails.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = selectedEmoji;
+            });
+        }
+
+        // Update live preview - called whenever any input changes
+        function updateLivePreview() {
+            const emoji = selectedEmoji;
+            const mainText = document.getElementById('mainText')?.value || 'Your Brand Name';
+            const tagline = document.getElementById('tagline')?.value || '';
+            const primaryColor = document.getElementById('primaryColor')?.value || '#0066FF';
+            const secondaryColor = document.getElementById('secondaryColor')?.value || '#00D4FF';
+            const useGradient = document.getElementById('useGradient')?.checked || false;
+
+            // Determine background based on style
+            let bgStyle = '';
+            let textColor = 'white';
+
+            if (currentStyle === 'minimal') {
+                bgStyle = 'background: #fff; border: 1px solid #e0e0e0;';
+                textColor = '#333';
+            } else if (currentStyle === 'bold') {
+                bgStyle = 'background: #000;';
+            } else {
+                // Default style
+                if (useGradient) {
+                    bgStyle = `background: linear-gradient(135deg, ${primaryColor}, ${secondaryColor});`;
+                } else {
+                    bgStyle = `background: linear-gradient(135deg, ${primaryColor}, ${adjustColorBrightness(primaryColor, -20)});`;
+                }
+            }
+
+            // Update favicon preview
+            const previewFavicon = document.getElementById('previewFavicon');
+            if (previewFavicon) {
+                previewFavicon.textContent = emoji;
+                previewFavicon.style.cssText = bgStyle + `color: ${textColor};`;
+            }
+
+            // Update browser tab preview
+            const previewTabIcon = document.getElementById('previewTabIcon');
+            if (previewTabIcon) {
+                previewTabIcon.textContent = emoji;
+                previewTabIcon.style.cssText = bgStyle + `color: ${textColor};`;
+            }
+
+            const previewTabTitle = document.getElementById('previewTabTitle');
+            if (previewTabTitle) {
+                previewTabTitle.textContent = mainText || 'Your Brand Name';
+            }
+
+            // Update social card preview
+            const previewSocial = document.getElementById('previewSocial');
+            if (previewSocial) {
+                previewSocial.style.cssText = bgStyle;
+            }
+
+            const previewSocialEmoji = document.getElementById('previewSocialEmoji');
+            if (previewSocialEmoji) {
+                previewSocialEmoji.textContent = emoji;
+            }
+
+            const previewSocialText = document.getElementById('previewSocialText');
+            if (previewSocialText) {
+                previewSocialText.textContent = mainText || 'Your Brand Name';
+                previewSocialText.style.color = textColor;
+            }
+
+            const previewSocialTagline = document.getElementById('previewSocialTagline');
+            if (previewSocialTagline) {
+                previewSocialTagline.textContent = tagline || 'Your inspiring tagline here';
+                previewSocialTagline.style.color = currentStyle === 'minimal' ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.8)';
+            }
         }
         
         // Style option selection
@@ -1498,6 +2160,8 @@
                 document.querySelectorAll('.style-option').forEach(opt => opt.classList.remove('active'));
                 this.classList.add('active');
                 currentStyle = this.dataset.style;
+                updateLivePreview();
+                savePreferences();
             });
         });
         
@@ -1519,26 +2183,22 @@
             });
         }
         
-        // Image configurations
+        // Image configurations with enhanced descriptions
         const imageConfigs = [
             // Social Media Images
-            { name: 'og-image', width: 1200, height: 630, type: 'social', format: 'jpg', description: 'Facebook, LinkedIn sharing' },
-            { name: 'twitter-card', width: 1200, height: 600, type: 'social', format: 'jpg', description: 'Twitter sharing' },
-            
+            { name: 'og-image', width: 1200, height: 630, type: 'social', category: 'social', format: 'jpg', description: 'Facebook, LinkedIn sharing', icon: '📘', hint: 'Used when your link is shared on Facebook, LinkedIn, Discord, and other platforms' },
+            { name: 'twitter-card', width: 1200, height: 600, type: 'social', category: 'social', format: 'jpg', description: 'Twitter/X sharing', icon: '🐦', hint: 'Optimized for Twitter/X link previews' },
+
             // Favicon Images
-            { name: 'favicon-16x16', width: 16, height: 16, type: 'favicon', format: 'png', description: 'Browser tab icon' },
-            { name: 'favicon-32x32', width: 32, height: 32, type: 'favicon', format: 'png', description: 'Browser tab icon' },
-            { name: 'favicon', width: 48, height: 48, type: 'favicon', format: 'ico', description: 'Legacy favicon' },
-            
-            // Apple Icons
-            { name: 'apple-touch-icon', width: 180, height: 180, type: 'favicon', format: 'png', description: 'iOS home screen' },
-            
-            // Android Icons
-            { name: 'android-chrome-192x192', width: 192, height: 192, type: 'favicon', format: 'png', description: 'Android Chrome' },
-            { name: 'android-chrome-512x512', width: 512, height: 512, type: 'favicon', format: 'png', description: 'Android Chrome (large)' },
-            
-            // Windows Tile
-            { name: 'mstile-150x150', width: 150, height: 150, type: 'favicon', format: 'png', description: 'Windows tile' },
+            { name: 'favicon-16x16', width: 16, height: 16, type: 'favicon', category: 'favicon', format: 'png', description: 'Small browser tab', icon: '🔹', hint: 'Tiny icon shown in browser tabs' },
+            { name: 'favicon-32x32', width: 32, height: 32, type: 'favicon', category: 'favicon', format: 'png', description: 'Standard browser tab', icon: '⭐', hint: 'Standard favicon for modern browsers' },
+            { name: 'favicon', width: 48, height: 48, type: 'favicon', category: 'favicon', format: 'ico', description: 'Legacy .ico format', icon: '📁', hint: 'Multi-size ICO file for older browsers' },
+
+            // Mobile Icons
+            { name: 'apple-touch-icon', width: 180, height: 180, type: 'favicon', category: 'mobile', format: 'png', description: 'iOS home screen', icon: '🍎', hint: 'Icon shown when users add your site to their iPhone/iPad home screen' },
+            { name: 'android-chrome-192x192', width: 192, height: 192, type: 'favicon', category: 'mobile', format: 'png', description: 'Android home screen', icon: '🤖', hint: 'Icon for Android devices and PWA installations' },
+            { name: 'android-chrome-512x512', width: 512, height: 512, type: 'favicon', category: 'mobile', format: 'png', description: 'Android splash screen', icon: '📲', hint: 'High-res icon for Android splash screens and store listings' },
+            { name: 'mstile-150x150', width: 150, height: 150, type: 'favicon', category: 'mobile', format: 'png', description: 'Windows tile', icon: '🪟', hint: 'Icon for Windows Start menu tiles' },
         ];
         
         function generateAllImages() {
@@ -1567,20 +2227,39 @@
             showLoading();
 
             const container = document.getElementById('imageContainer');
-            const grid = document.getElementById('imageGrid');
+
+            // Get grouped grids
+            const socialGrid = document.getElementById('socialMediaGrid');
+            const faviconGrid = document.getElementById('faviconsGrid');
+            const mobileGrid = document.getElementById('mobileIconsGrid');
 
             // Reset generated canvases
             generatedCanvases = {};
 
             container.classList.remove('hidden');
-            grid.innerHTML = '';
+
+            // Clear all grids
+            socialGrid.innerHTML = '';
+            faviconGrid.innerHTML = '';
+            mobileGrid.innerHTML = '';
 
             setTimeout(() => {
                 try {
                     imageConfigs.forEach(config => {
                         const imageCard = createImageCard(config);
-                        grid.appendChild(imageCard);
+
+                        // Add to appropriate grid based on category
+                        if (config.category === 'social') {
+                            socialGrid.appendChild(imageCard);
+                        } else if (config.category === 'favicon') {
+                            faviconGrid.appendChild(imageCard);
+                        } else if (config.category === 'mobile') {
+                            mobileGrid.appendChild(imageCard);
+                        }
                     });
+
+                    // Generate HTML installation code
+                    generateHtmlCode();
 
                     hideLoading();
                     showMessage('All images generated successfully!', 'success');
@@ -1594,6 +2273,84 @@
                 }
             }, 500);
         }
+
+        // Generate HTML installation code
+        function generateHtmlCode() {
+            const websiteUrl = document.getElementById('websiteUrl')?.value || 'yourwebsite.com';
+            const baseUrl = websiteUrl.startsWith('http') ? websiteUrl : `https://${websiteUrl}`;
+
+            const htmlCode = `<span class="comment">&lt;!-- Favicons --&gt;</span>
+<span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="value">"icon"</span> <span class="attr">type</span>=<span class="value">"image/x-icon"</span> <span class="attr">href</span>=<span class="value">"/favicon.ico"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="value">"icon"</span> <span class="attr">type</span>=<span class="value">"image/png"</span> <span class="attr">sizes</span>=<span class="value">"32x32"</span> <span class="attr">href</span>=<span class="value">"/favicon-32x32.png"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="value">"icon"</span> <span class="attr">type</span>=<span class="value">"image/png"</span> <span class="attr">sizes</span>=<span class="value">"16x16"</span> <span class="attr">href</span>=<span class="value">"/favicon-16x16.png"</span><span class="tag">&gt;</span>
+
+<span class="comment">&lt;!-- Apple Touch Icon --&gt;</span>
+<span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="value">"apple-touch-icon"</span> <span class="attr">sizes</span>=<span class="value">"180x180"</span> <span class="attr">href</span>=<span class="value">"/apple-touch-icon.png"</span><span class="tag">&gt;</span>
+
+<span class="comment">&lt;!-- Web App Manifest --&gt;</span>
+<span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="value">"manifest"</span> <span class="attr">href</span>=<span class="value">"/site.webmanifest"</span><span class="tag">&gt;</span>
+
+<span class="comment">&lt;!-- Social Media / Open Graph --&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">property</span>=<span class="value">"og:image"</span> <span class="attr">content</span>=<span class="value">"${baseUrl}/og-image.jpg"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">property</span>=<span class="value">"og:image:width"</span> <span class="attr">content</span>=<span class="value">"1200"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">property</span>=<span class="value">"og:image:height"</span> <span class="attr">content</span>=<span class="value">"630"</span><span class="tag">&gt;</span>
+
+<span class="comment">&lt;!-- Twitter Card --&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="value">"twitter:card"</span> <span class="attr">content</span>=<span class="value">"summary_large_image"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="value">"twitter:image"</span> <span class="attr">content</span>=<span class="value">"${baseUrl}/twitter-card.jpg"</span><span class="tag">&gt;</span>
+
+<span class="comment">&lt;!-- Windows Tile --&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="value">"msapplication-TileImage"</span> <span class="attr">content</span>=<span class="value">"/mstile-150x150.png"</span><span class="tag">&gt;</span>`;
+
+            document.getElementById('htmlCodeContent').innerHTML = htmlCode;
+        }
+
+        // Copy HTML code to clipboard
+        function copyHtmlCode() {
+            const websiteUrl = document.getElementById('websiteUrl')?.value || 'yourwebsite.com';
+            const baseUrl = websiteUrl.startsWith('http') ? websiteUrl : `https://${websiteUrl}`;
+
+            const plainCode = `<!-- Favicons -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+<!-- Apple Touch Icon -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+<!-- Web App Manifest -->
+<link rel="manifest" href="/site.webmanifest">
+
+<!-- Social Media / Open Graph -->
+<meta property="og:image" content="${baseUrl}/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="${baseUrl}/twitter-card.jpg">
+
+<!-- Windows Tile -->
+<meta name="msapplication-TileImage" content="/mstile-150x150.png">`;
+
+            navigator.clipboard.writeText(plainCode).then(() => {
+                const btn = document.querySelector('.copy-code-btn');
+                const icon = document.getElementById('copyBtnIcon');
+                const text = document.getElementById('copyBtnText');
+
+                btn.classList.add('copied');
+                icon.textContent = '✅';
+                text.textContent = 'Copied!';
+
+                setTimeout(() => {
+                    btn.classList.remove('copied');
+                    icon.textContent = '📋';
+                    text.textContent = 'Copy Code';
+                }, 2000);
+            }).catch(err => {
+                showMessage('Failed to copy code. Please select and copy manually.', 'error');
+            });
+        }
         
         // Store all generated canvases globally for ZIP download
         let generatedCanvases = {};
@@ -1601,10 +2358,10 @@
         function createImageCard(config) {
             const card = document.createElement('div');
             card.className = 'image-card';
-            
+
             const canvasContainer = document.createElement('div');
             canvasContainer.className = 'canvas-container';
-            
+
             const canvas = document.createElement('canvas');
             canvas.width = config.width;
             canvas.height = config.height;
@@ -1617,32 +2374,36 @@
             } else {
                 drawFavicon(canvas, config);
             }
-            
+
             // Store canvas for ZIP download
             generatedCanvases[`${config.name}.${config.format}`] = {
                 canvas: canvas,
                 format: config.format,
                 name: config.name
             };
-            
+
             canvasContainer.appendChild(canvas);
-            
+
             const info = document.createElement('div');
             info.className = 'image-info';
             info.innerHTML = `
                 <h3>${config.name}.${config.format}</h3>
-                <p>${config.width}x${config.height}px - ${config.description}</p>
+                <div class="asset-description">
+                    <span class="asset-description-icon">${config.icon || '📁'}</span>
+                    <span>${config.width}x${config.height}px — ${config.description}</span>
+                </div>
+                <p style="font-size: 12px; color: #888; margin: 8px 0 15px;" title="${config.hint || ''}">${config.hint || ''}</p>
                 <button class="download-btn" onclick="downloadImage('${config.name}', '${config.format}', this)">
                     Download ${config.format.toUpperCase()}
                 </button>
             `;
-            
+
             card.appendChild(canvasContainer);
             card.appendChild(info);
-            
+
             // Store canvas reference for download
             card.canvas = canvas;
-            
+
             return card;
         }
 
